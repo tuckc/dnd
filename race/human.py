@@ -10,5 +10,5 @@ class Human(object):
         self.languages = ['Common', language]
         self.other = []
         self.proficiency = []
-        self.cantrip = []
+        self.cantrip = None
         

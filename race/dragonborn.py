@@ -13,3 +13,5 @@ class Dragonborn(object):
             'Breath Weapon',
             'Damage Resistance(' + ancestry + ')'
         ]
+        self.proficiency = []
+        self.cantrip = None

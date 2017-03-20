@@ -21,4 +21,4 @@ class Halfelf(object):
         self.languages = ['Common', 'Elvish', language]
         self.other = ['Darkvision', 'Fey Ancestry']
         self.proficiency = proficiencies
-        self.cantrip = []
+        self.cantrip = None

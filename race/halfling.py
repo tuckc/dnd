@@ -10,25 +10,29 @@ class Halfling(object):
         self.languages = ['Common', 'Halfling']
         self.other = ['Lucky', 'Brave', 'Halfling Nimbleness']
         self.subrace = subrace
+        self.proficiency = []
+        self.cantrip = None
         if self.subrace is 'Lightfoot':
-            lightfoot(self)
+            self.lightfoot()
         if self.subrace is 'Stout':
-            stout(self)
+            self.stout()
 
-def lightfoot(halfling):
-    halfling.charisma = 1
-    halfling.constitution = 0
-    halfling.other.append('Naturally Stealthy')
-    try:
-        halfling.other.remove('Stout Resillience')
-    except ValueError:
-        pass
+    def lightfoot(self):
+        self.charisma = 1
+        self.constitution = 0
+        if 'Naturally Stealthy' not in self.other:
+            self.other.append('Naturally Stealthy')
+        try:
+            self.other.remove('Stout Resillience')
+        except ValueError:
+            pass
 
-def stout(halfling):
-    halfling.constitution = 1
-    halfling.charisma = 0
-    halfling.other.append('Stout Resillience')
-    try:
-        halfling.other.remove('Naturally Stealthy')
-    except ValueError:
-        pass
+    def stout(self):
+        self.constitution = 1
+        self.charisma = 0
+        if 'Stout Resillience' not in self.other:
+            self.other.append('Stout Resillience')
+        try:
+            self.other.remove('Naturally Stealthy')
+        except ValueError:
+            pass

@@ -19,21 +19,30 @@ class Dwarf(object):
             'Stone Cunning'
         ]
         self.subrace = subrace
+        self.proficiency = []
+        self.cantrip = None
         if self.subrace is 'Hill Dwarf':
-            hill_dwarf(self)
+            self.hill_dwarf()
         if self.subrace is 'Mountain Dwarf':
-            mountain_dwarf(self)
+            self.mountain_dwarf()
 
-def hill_dwarf(dwarf):
-    dwarf.wisdom = 1
-    dwarf.strength = 0
-    try:
-        dwarf.other.remove('Light Armor')
-        dwarf.other.remove('Medium Armor')
-    except ValueError:
-        pass
+    def hill_dwarf(self):
+        self.wisdom = 1
+        self.strength = 0
+        if 'Dwarven Toughness' not in self.other:
+            self.other.append('Dwarven Toughness')
+        try:
+            self.other.remove('Light Armor')
+            self.other.remove('Medium Armor')
+        except ValueError:
+            pass
 
-def mountain_dwarf(dwarf):
-    dwarf.strength = 2
-    dwarf.wisdom = 0
-    dwarf.other.extend(['Light Armor', 'Medium Armor'])
+    def mountain_dwarf(self):
+        self.strength = 2
+        self.wisdom = 0
+        if 'Light Armor' not in self.other:
+            self.other.extend(['Light Armor', 'Medium Armor'])
+        try:
+            self.other.remove('Dwarven Toughness')
+        except ValueError:
+            pass

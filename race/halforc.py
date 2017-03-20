@@ -9,6 +9,6 @@ class Halforc(object):
         self.speed = 30
         self.languages = ['Common', 'Orc']
         self.other = ['Darkvision', 'Relentless Endurance', 'Savage Attacks']
-        self.proficiency = 'Intimidation'
-        self.cantrip = []
+        self.proficiency = ['Intimidation']
+        self.cantrip = None
         
