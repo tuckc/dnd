@@ -1,17 +1,13 @@
-class Gnome(object):
+from race import Race
+
+class Gnome(Race):
     def __init__(self, subrace):
-        self.strength = 0
-        self.dexterity = 0
-        self.constitution = 0
+        Race.__init__()
         self.intelligence = 2
-        self.wisdom = 0
-        self.charisma = 0
         self.speed = 25
         self.languages = ['Common', 'Gnomish']
-        self.other = ['Darkvision', 'Gnome Cunning']
+        self.features = ['Darkvision', 'Gnome Cunning']
         self.subrace = subrace
-        self.proficiency = []
-        self.cantrip = None
         if self.subrace is 'Forest Gnome':
             self.forest_gnome()
         if self.subrace is 'Rock Gnome':
@@ -21,11 +17,11 @@ class Gnome(object):
         self.dexterity = 1
         self.constitution = 0
         self.cantrip = 'Minor Illusion'
-        if 'Speak with Small Beasts' not in self.other:
-            self.other.append('Speak with Small Beasts')
+        if 'Speak with Small Beasts' not in self.features:
+            self.features.append('Speak with Small Beasts')
         try:
-            self.other.remove('Artificer\'s Lore')
-            self.other.remove('Tinker')
+            self.features.remove('Artificer\'s Lore')
+            self.features.remove('Tinker')
         except ValueError:
             pass
 
@@ -33,10 +29,10 @@ class Gnome(object):
         self.constitution = 1
         self.dexterity = 0
         self.cantrip = None
-        if 'Tinker' not in self.other:
-            self.other.append('Artificer\'s Lore')
-            self.other.append('Tinker')
+        if 'Tinker' not in self.features:
+            self.features.append('Artificer\'s Lore')
+            self.features.append('Tinker')
         try:
-            self.other.remove('Speak with Small Beasts')
+            self.features.remove('Speak with Small Beasts')
         except ValueError:
             pass

@@ -1,19 +1,14 @@
 from __future__ import print_function
+from race import Race
 
-class Elf(object):
+class Elf(Race):
     def __init__(self, subrace, cantrip=None, language=None):
-        self.strength = 0
+        Race.__init__()
         self.dexterity = 2
-        self.constitution = 0
-        self.intelligence = 0
-        self.wisdom = 0
-        self.charisma = 0
-        self.speed = 30
         self.languages = ['Common', 'Elvish']
-        self.other = ['Darkvision', 'Fey Ancestry', 'Trance']
+        self.features = ['Darkvision', 'Fey Ancestry', 'Trance']
         self.subrace = subrace
         self.proficiency = ['Perception']
-        self.cantrip = None
         if self.subrace is 'High Elf':
             self.high_elf(cantrip, language)
         if self.subrace is 'Wood Elf':
@@ -50,11 +45,11 @@ class Elf(object):
         if len(self.languages) > 2:
             self.languages.pop()
         try:
-            self.other[self.other.index('Superior Darkvision')] = 'Darkvision'
+            self.features[self.features.index('Superior Darkvision')] = 'Darkvision'
         except ValueError as err:
             print(err)
         try:
-            self.other.remove('Mask of the Wild')
+            self.features.remove('Mask of the Wild')
         except ValueError as err:
             print(err)
         try:
@@ -68,10 +63,10 @@ class Elf(object):
     def _wood_elf_check(self):
         if len(self.languages) > 2:
             self.languages.pop()
-        if 'Mask of the Wild' not in self.other:
-            self.other.append('Mask of the Wild')
+        if 'Mask of the Wild' not in self.features:
+            self.features.append('Mask of the Wild')
         try:
-            self.other[self.other.index('Superior Darkvision')] = 'Darkvision'
+            self.features[self.features.index('Superior Darkvision')] = 'Darkvision'
         except ValueError as err:
             print(err)
         try:
@@ -86,11 +81,11 @@ class Elf(object):
         if len(self.languages) > 2:
             self.languages.pop()
         try:
-            self.other[self.other.index('Darkvision')] = 'Superior Darkvision'
+            self.features[self.features.index('Darkvision')] = 'Superior Darkvision'
         except ValueError as err:
             print(err)
         try:
-            self.other.remove('Mask of the Wild')
+            self.features.remove('Mask of the Wild')
         except ValueError as err:
             print(err)
         try:
