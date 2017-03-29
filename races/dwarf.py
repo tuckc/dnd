@@ -2,7 +2,7 @@ from race import Race
 
 class Dwarf(Race):
     def __init__(self, subrace, tool):
-        Race.__init__()
+        Race.__init__(self)
         self.constitution = 2
         self.speed = 25
         self.languages = ['Common', 'Dwarvish']

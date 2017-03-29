@@ -2,7 +2,7 @@ from char_class import Class
 
 class Rogue(Class):
     def __init__(self, skills, equipment, expert1, expert2):
-        Class.__init__()
+        Class.__init__(self)
         self.other = [
             'Light Armor',
             'Simple Weapons',

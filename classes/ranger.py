@@ -2,7 +2,7 @@ from char_class import Class
 
 class Ranger(Class):
     def __init__(self, skills, equipment):
-        Class.__init__()
+        Class.__init__(self)
         self.hit_die = 10
         self.other = [
             'Light Armor',

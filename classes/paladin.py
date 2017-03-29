@@ -2,7 +2,7 @@ from char_class import Class
 
 class Paladin(Class):
     def __init__(self, skills, equipment):
-        Class.__init__()
+        Class.__init__(self)
         self.other = [
             'All Armor',
             'Shields',

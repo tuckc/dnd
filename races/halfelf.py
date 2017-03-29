@@ -2,7 +2,7 @@ from race import Race
 
 class Halfelf(Race):
     def __init__(self, abilities, language, proficiencies):
-        Race.__init__()
+        Race.__init__(self)
         self.charisma = 1
         for ability in abilities:
             if ability is 'Strength':

@@ -2,7 +2,7 @@ from char_class import Class
 
 class Monk(Class):
     def __init__(self, skills, equipment, tool):
-        Class.__init__()
+        Class.__init__(self)
         self.other = [
             'Simple Weapons',
             'Shortswords',

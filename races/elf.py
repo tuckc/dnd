@@ -3,7 +3,7 @@ from race import Race
 
 class Elf(Race):
     def __init__(self, subrace, cantrip=None, language=None):
-        Race.__init__()
+        Race.__init__(self)
         self.dexterity = 2
         self.languages = ['Common', 'Elvish']
         self.features = ['Darkvision', 'Fey Ancestry', 'Trance']

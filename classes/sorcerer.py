@@ -2,7 +2,7 @@ from char_class import Class
 
 class Sorcerer(Class):
     def __init__(self, skills, equipment, cantrips, spells, origin):
-        Class.__init__()
+        Class.__init__(self)
         self.hit_die = 6
         self.other = [
             'Daggers',

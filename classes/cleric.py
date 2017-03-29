@@ -2,7 +2,7 @@ from char_class import Class
 
 class Cleric(Class):
     def __init__(self, skills, equipment, cantrips, spells, domain):
-        Class.__init__()
+        Class.__init__(self)
         self.other = [
             'Light Armor',
             'Medium Armor',

@@ -2,7 +2,7 @@ from char_class import Class
 
 class Druid(Class):
     def __init__(self, skills, equipment, cantrips, spells):
-        Class.__init__()
+        Class.__init__(self)
         self.other = [
             'Light Armor (non-metal)',
             'Medium Armor (non-metal)',

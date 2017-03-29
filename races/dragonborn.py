@@ -2,7 +2,7 @@ from race import Race
 
 class Dragonborn(Race):
     def __init__(self, ancestry):
-        Race.__init__()
+        Race.__init__(self)
         self.strength = 2
         self.charisma = 1
         self.languages = ['Common', 'Draconic']

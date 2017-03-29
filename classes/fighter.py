@@ -2,7 +2,7 @@ from char_class import Class
 
 class Fighter(Class):
     def __init__(self, skills, equipment, fight_style):
-        Class.__init__()
+        Class.__init__(self)
         self.hit_die = 10
         self.other = [
             'All Armor',

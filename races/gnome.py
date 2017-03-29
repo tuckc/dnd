@@ -2,7 +2,7 @@ from race import Race
 
 class Gnome(Race):
     def __init__(self, subrace):
-        Race.__init__()
+        Race.__init__(self)
         self.intelligence = 2
         self.speed = 25
         self.languages = ['Common', 'Gnomish']

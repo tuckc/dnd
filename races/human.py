@@ -2,7 +2,7 @@ from race import Race
 
 class Human(Race):
     def __init__(self, language):
-        Race.__init__()
+        Race.__init__(self)
         self.strength = 1
         self.dexterity = 1
         self.constitution = 1

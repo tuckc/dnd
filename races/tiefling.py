@@ -2,7 +2,7 @@ from race import Race
 
 class Tiefling(Race):
     def __init__(self):
-        Race.__init__()
+        Race.__init__(self)
         self.intelligence = 1
         self.charisma = 2
         self.languages = ['Common', 'Infernal']
