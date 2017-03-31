@@ -80,6 +80,11 @@ FieldFlags: 12582912
 FieldJustification: Left
 ---
 FieldType: Text
+FieldName: ST Strength
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
 FieldName: DEX
 FieldFlags: 8388608
 FieldJustification: Center
@@ -182,6 +187,108 @@ FieldFlags: 8388608
 FieldJustification: Center
 ---
 FieldType: Text
+FieldName: ST Dexterity
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: ST Constitution
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: ST Intelligence
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: ST Wisdom
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: ST Charisma
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Acrobatics
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Animal
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Athletics
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Deception 
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: History 
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Insight
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Intimidation
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Button
+FieldName: Check Box 11
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 18
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 19
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 20
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 21
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 22
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Text
 FieldName: Wpn Name
 FieldFlags: 8388608
 FieldJustification: Left
@@ -217,6 +324,11 @@ FieldFlags: 8388608
 FieldJustification: Left
 ---
 FieldType: Text
+FieldName: Investigation 
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
 FieldName: WIS
 FieldFlags: 8388608
 FieldJustification: Center
@@ -232,9 +344,19 @@ FieldFlags: 8388608
 FieldJustification: Left
 ---
 FieldType: Text
+FieldName: Arcana
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
 FieldName: Wpn3 Damage 
 FieldFlags: 8388608
 FieldJustification: Left
+---
+FieldType: Text
+FieldName: Perception 
+FieldFlags: 12582912
+FieldJustification: Center
 ---
 FieldType: Text
 FieldName: WISmod
@@ -247,8 +369,174 @@ FieldFlags: 8388608
 FieldJustification: Center
 ---
 FieldType: Text
+FieldName: Nature
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Performance
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Medicine
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Religion
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Stealth 
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Button
+FieldName: Check Box 23
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 24
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 25
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 26
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 27
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 28
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 29
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 30
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 31
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 32
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 33
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 34
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 35
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 36
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 37
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 38
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 39
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Button
+FieldName: Check Box 40
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+---
+FieldType: Text
+FieldName: Persuasion
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: SleightofHand
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
 FieldName: CHamod
 FieldFlags: 8388608
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: Survival
+FieldFlags: 12582912
 FieldJustification: Center
 ---
 FieldType: Text
@@ -262,9 +550,34 @@ FieldFlags: 12582912
 FieldJustification: Center
 ---
 FieldType: Text
+FieldName: CP
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
 FieldName: ProficienciesLang
 FieldFlags: 8392704
 FieldJustification: Left
+---
+FieldType: Text
+FieldName: SP
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: EP
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: GP
+FieldFlags: 12582912
+FieldJustification: Center
+---
+FieldType: Text
+FieldName: PP
+FieldFlags: 12582912
+FieldJustification: Center
 ---
 FieldType: Text
 FieldName: Equipment
@@ -275,286 +588,3 @@ FieldType: Text
 FieldName: Features and Traits
 FieldFlags: 8392704
 FieldJustification: Left
----
-FieldType: Text
-FieldName: Athletics
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: SavingThrows
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: Check Box 18
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Text
-FieldName: SleightofHand
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Stealth
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: ChBx Athletics
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ST Strength
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Sleight
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Stealth
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ST Dexterity
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Text
-FieldName: SavingThrows2
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: SavingThrows3
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: ST Constitution
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Acrobatics
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Text
-FieldName: Acrobatics
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: ChBx Nature
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ST Intelligence
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Arcana
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx History
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Investigation
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Text
-FieldName: SavingThrows4
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Arcana
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: History
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: ChBx Religion
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Text
-FieldName: Investigation
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Nature
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Religion
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Survival
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: ChBx Survival
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Text
-FieldName: Animal Handling
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Medicine
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: ST Wisdom
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Animal
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Insight
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Perception
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Text
-FieldName: Perception
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: SavingThrows5
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: SavingThrows6
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Deception
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Intimidation
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Performance
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Text
-FieldName: Persuasion
-FieldFlags: 12582912
-FieldJustification: Center
----
-FieldType: Button
-FieldName: ST Charisma
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Deception
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Intimidation
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Performance
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes
----
-FieldType: Button
-FieldName: ChBx Persuasion
-FieldFlags: 0
-FieldJustification: Left
-FieldStateOption: Off
-FieldStateOption: Yes

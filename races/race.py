@@ -11,5 +11,5 @@ class Race(object):
         self.features = []
         self.other = []
         self.subrace = ''
-        self.proficiency = []
-        self.cantrip = None
+        self.proficiencies = []
+        self.cantrips = []

@@ -7,5 +7,5 @@ class Halforc(Race):
         self.constitution = 1
         self.languages = ['Common', 'Orc']
         self.features = ['Darkvision', 'Relentless Endurance', 'Savage Attacks']
-        self.proficiency = ['Intimidation']
+        self.proficiencies = ['Intimidation']
         

@@ -8,7 +8,7 @@ class Elf(Race):
         self.languages = ['Common', 'Elvish']
         self.features = ['Darkvision', 'Fey Ancestry', 'Trance']
         self.subrace = subrace
-        self.proficiency = ['Perception']
+        self.proficiencies = ['Perception']
         if self.subrace is 'High Elf':
             self.high_elf(cantrip, language)
         if self.subrace is 'Wood Elf':

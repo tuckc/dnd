@@ -17,4 +17,4 @@ class Halfelf(Race):
                 self.wisdom = 1
         self.languages = ['Common', 'Elvish', language]
         self.features = ['Darkvision', 'Fey Ancestry']
-        self.proficiency = proficiencies
+        self.proficiencies = proficiencies

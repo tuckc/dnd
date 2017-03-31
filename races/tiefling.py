@@ -7,4 +7,4 @@ class Tiefling(Race):
         self.charisma = 2
         self.languages = ['Common', 'Infernal']
         self.features = ['Darkvision', 'Hellish Resistance', 'Infernal Legacy']
-        self.cantrip = 'Thaumaturgy'
+        self.cantrips = ['Thaumaturgy']
