@@ -1,0 +1,52 @@
+[
+	{
+        "Name": "Light Crossbow",
+        "Cost": "25 gp",
+        "Damage": "1d8 P",
+        "Weight": "5 lb",
+        "Properties": [
+            "Ammunition (80/320)",
+            "Loading",
+            "Two-Handed"
+        ]
+    },
+    {
+        "Name": "Dart",
+        "Cost": "5 cp",
+        "Damage": "1d4 P",
+        "Weight": "0.25 lb",
+        "Properties": [
+            "Finesse",
+            "Thrown (20/60)"
+        ]
+    },
+    {
+        "Name": "Shortbow",
+        "Cost": "25 gp",
+        "Damage": "1d6 P",
+        "Weight": "2 lb",
+        "Properties": [
+            "Ammunition (80/320)",
+            "Two-handed"
+        ]
+    },
+    {
+        "Name": "Sling",
+        "Cost": "1 sp",
+        "Damage": "1d4 B",
+        "Weight": "",
+        "Properties": [
+            "Ammunition (30/120)"
+        ]
+    },
+	{
+        "Name": "Slingstaff",
+        "Cost": "2 sp",
+        "Damage": "1d6 B",
+        "Weight": "2 lb",
+        "Properties": [
+            "Ammunition (30/120)",
+            "Two-handed"
+        ]
+    }
+]

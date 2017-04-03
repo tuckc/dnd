@@ -10,18 +10,3 @@ class Class(object):
         self.equipment = []
         self.cantrips = []
         self.spells = []
-
-    def calculate_hit_points(self, modifier):
-        self.hit_points = self.hit_die + modifier
-
-    def calculate_armor_class(self, modifier, light, medium, heavy, shield):
-        if light:
-            self.armor_class = 11 + modifier
-        elif medium:
-            self.armor_class = 14 + modifier
-        elif heavy:
-            self.armor_class = 16
-        else:
-            self.armor_class = 10 + modifier
-        if shield:
-            self.armor_class += 2
