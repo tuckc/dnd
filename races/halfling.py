@@ -9,26 +9,15 @@ class Halfling(Race):
         self.features = ['Lucky', 'Brave', 'Halfling Nimbleness']
         self.subrace = subrace
         if self.subrace is 'Lightfoot':
-            self.lightfoot()
+            self._lightfoot()
         if self.subrace is 'Stout':
-            self.stout()
+            self._stout()
 
-    def lightfoot(self):
+    def _lightfoot(self):
         self.charisma = 1
-        self.constitution = 0
-        if 'Naturally Stealthy' not in self.features:
-            self.features.append('Naturally Stealthy')
-        try:
-            self.features.remove('Stout Resillience')
-        except ValueError:
-            pass
+        self.features.append('Naturally Stealthy')
 
-    def stout(self):
+    def _stout(self):
         self.constitution = 1
-        self.charisma = 0
-        if 'Stout Resillience' not in self.features:
-            self.features.append('Stout Resillience')
-        try:
-            self.features.remove('Naturally Stealthy')
-        except ValueError:
-            pass
+        self.features.append('Stout Resillience')
+        
