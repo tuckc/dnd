@@ -97,7 +97,7 @@ class Character(object):
         adjusted_dex_mod = self.stats.dex_mod
         if adjusted_dex_mod > 2:
             adjusted_dex_mod = 2
-        if 'Light Armor' in self.character_class.equipment:
+        if 'Leather Armor' in self.character_class.equipment:
             self.armor_class = 11 + self.stats.dex_mod
         elif 'Scale Mail' in self.character_class.equipment:
             self.armor_class = 14 + adjusted_dex_mod
@@ -105,9 +105,8 @@ class Character(object):
             self.armor_class = 16
         else:
             self.armor_class = 10 + self.stats.dex_mod
-        for equipment in self.character_class.equipment:
-            if 'Shield' in equipment:
-                self.armor_class += 2
+        if 'Shield' in self.character_class.equipment:
+            self.armor_class += 2
 
     def _set_speed(self):
         self.speed = self.race.speed

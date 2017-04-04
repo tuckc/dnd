@@ -13,7 +13,7 @@ class Rogue(Class):
             'Thieves\' Tools'
         ]
         self.features = [
-            'Expertise: '+ expert1 + expert2,
+            'Expertise: '+ expert1 + ', ' + expert2,
             'Sneak Attack',
             'Theives\' Cant'
         ]

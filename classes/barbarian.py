@@ -13,5 +13,5 @@ class Barbarian(Class):
         ]
         self.features = ['Rage', 'Unarmored Defense']
         self.saving_throws = ['Strength', 'Constitution']
-        self.skills = [skills]
+        self.skills = skills
         self.equipment = equipment
