@@ -8,9 +8,9 @@ class Halfling(Race):
         self.languages = ['Common', 'Halfling']
         self.features = ['Lucky', 'Brave', 'Halfling Nimbleness']
         self.subrace = subrace
-        if self.subrace is 'Lightfoot':
+        if self.subrace is 'Lightfoot Halfling':
             self._lightfoot()
-        if self.subrace is 'Stout':
+        if self.subrace is 'Stout Halfling':
             self._stout()
 
     def _lightfoot(self):

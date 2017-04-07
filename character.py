@@ -12,21 +12,20 @@ class Character(object):
         self._set_hit_points()
         self._set_armor_class()
         self._set_speed()
-        self._set_passive_perception()
         self._set_other()
         self._set_features()
         self._set_attacks()
         self.initiative = self.stats.dex_mod
 
     def _set_header(self, player_name):
-        self.character_name = self.background.traits.name
+        self.character_name = self.background.name
         self.class_name = type(self.character_class).__name__ + ' Lvl 1'
         self.background_name = 'Custom'
         self.player_name = player_name
         self.race_name = type(self.race).__name__
         if self.race.subrace:
             self.race_name = self.race.subrace
-        self.alignment = self.background.traits.alignment
+        self.alignment = self.background.alignment
         self.experience = '0'
 
     def _set_proficiencies(self):
@@ -45,7 +44,7 @@ class Character(object):
         self.mods = {}
         self.save_mods = {}
         self.mods['Acrobatics'] = self.stats.dex_mod
-        self.mods['Animal'] = self.stats.wis_mod
+        self.mods['Animal Handling'] = self.stats.wis_mod
         self.mods['Athletics'] = self.stats.str_mod
         self.mods['Deception'] = self.stats.chr_mod
         self.mods['History'] = self.stats.int_mod
@@ -60,7 +59,7 @@ class Character(object):
         self.mods['Religion'] = self.stats.int_mod
         self.mods['Stealth'] = self.stats.dex_mod
         self.mods['Persuasion'] = self.stats.chr_mod
-        self.mods['SleightofHand'] = self.stats.dex_mod
+        self.mods['Sleight of Hand'] = self.stats.dex_mod
         self.mods['Survival'] = self.stats.wis_mod
         self.save_mods['Strength'] = self.stats.str_mod
         self.save_mods['Dexterity'] = self.stats.dex_mod
@@ -72,26 +71,27 @@ class Character(object):
             self.mods[proficiency] += 2
         for save_throw in self.character_class.saving_throws:
             self.save_mods[save_throw] += 2
+        self._set_passive_perception()
         self._convert_mods_to_str()
+
+    def _set_passive_perception(self):
+        self.passive_perception = 10 + self.mods['Perception']
 
     def _convert_mods_to_str(self):
         for skill in self.mods:
             if self.mods[skill] > 0:
                 self.mods[skill] = '+' + str(self.mods[skill])
-            elif self.mods[skill] < 0:
-                self.mods[skill] = '-' + str(self.mods[skill])
             else:
                 self.mods[skill] = str(self.mods[skill])
         for save in self.save_mods:
             if self.save_mods[save] > 0:
                 self.save_mods[save] = '+' + str(self.save_mods[save])
-            elif self.save_mods[save] < 0:
-                self.save_mods[save] = '-' + str(self.save_mods[save])
             else:
                 self.save_mods[save] = str(self.save_mods[save])
+        self.passive_perception = str(self.passive_perception)
 
     def _set_hit_points(self):
-        self.hit_points = self.character_class.hit_die + self.stats.con_mod
+        self.hit_points = str(self.character_class.hit_die + self.stats.con_mod)
 
     def _set_armor_class(self):
         adjusted_dex_mod = self.stats.dex_mod
@@ -107,14 +107,13 @@ class Character(object):
             self.armor_class = 10 + self.stats.dex_mod
         if 'Shield' in self.character_class.equipment:
             self.armor_class += 2
+        self.armor_class = str(self.armor_class)
 
     def _set_speed(self):
         self.speed = self.race.speed
-        if 'Chain Mail' in self.character_class.equipment and self.stats.str < 13:
+        if 'Chain Mail' in self.character_class.equipment and self.stats.strength < 13:
             self.speed -= 10
-
-    def _set_passive_perception(self):
-        self.passive_perception = 10 + self.mods['Perception']
+        self.speed = str(self.speed)
 
     def _set_other(self):
         self.languages = []
@@ -132,8 +131,8 @@ class Character(object):
         self.features.extend(self.background.features)
 
     def _set_attacks(self):
-        with open('simpleMelee.json') as simple_m, open('simpleRanged.json') as simple_r,\
-        open('martialMelee.json') as martial_m, open('martialRanged.json') as martial_r:
+        with open('../simpleMelee.json') as simple_m, open('../simpleRanged.json') as simple_r,\
+        open('../martialMelee.json') as martial_m, open('../martialRanged.json') as martial_r:
             simple_melee = json.load(simple_m)
             simple_ranged = json.load(simple_r)
             martial_melee = json.load(martial_m)
@@ -144,26 +143,26 @@ class Character(object):
         for equipment in self.character_class.equipment:
             if count > 2:
                 break
-            if equipment in simple_melee:
+            if equipment in [wep['Name'] for wep in simple_melee]:
                 weapon = self._get_weapon(equipment, simple_melee)
                 self._set_melee_stats(attacks, equipment, 'Simple Weapons', weapon, count)
                 count += 1
-            elif equipment in simple_ranged:
+            elif equipment in [wep['Name'] for wep in simple_ranged]:
                 weapon = self._get_weapon(equipment, simple_ranged)
                 self._set_ranged_stats(attacks, equipment, 'Simple Weapons', weapon, count)
                 count += 1
-            elif equipment in martial_melee:
+            elif equipment in [wep['Name'] for wep in martial_melee]:
                 weapon = self._get_weapon(equipment, martial_melee)
                 self._set_melee_stats(attacks, equipment, 'Martial Weapons', weapon, count)
                 count += 1
-            elif equipment in martial_ranged:
+            elif equipment in [wep['Name'] for wep in martial_ranged]:
                 weapon = self._get_weapon(equipment, martial_ranged)
                 self._set_ranged_stats(attacks, equipment, 'Martial Weapons', weapon, count)
                 count += 1
 
     def _get_weapon(self, name, weapons):
         for weapon in weapons:
-            if weapons['Name'] == name:
+            if weapon['Name'] == name:
                 return weapon
         return {'Name': 'N/A', 'Damage': 'N/A'}
 
