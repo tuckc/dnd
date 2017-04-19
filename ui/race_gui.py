@@ -3,18 +3,41 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import sys
+#from ..races import *
+#print sys.path
+#print '---------------------------------------'
+sys.path.append(sys.path[0][:-2]+"races")
+#print 'NEW path --------------->', sys.path
+
+import dragonborn
+import human
+import gnome
+import halforc
+import halfling
+import elf
+import halfelf
+import tiefling
+import dwarf
 
 class RaceWindow(QWidget):
 	def __init__(self, parent):
 		QWidget.__init__(self)
+		self.tab_window = parent		
 		self.setup()
-		self.tab_window = parent
+		
+	#def handler(self,pickedRace):
+	#	if 
+			
 
 	def setup(self):
-
-		self.gnomeButton=QPushButton("Gnome")
+		#value=gnome.Gnome()
+		#print "-------------------------",value	
+		self.gnomeButton=QPushButton('Gnome')
 		self.gnomeButton.setToolTip("Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.<br>Gnomes average slightly over 3 feet tall and weigh 40 to 45 pounds.<br>------------Stats------------<br>Intelligence +2<br>Speed:25 Feet<br>Skills:Darkvision, Gnome Cunning<br>Languages: Common and Gnomish<br>Subrace: Yes")
-		
+		#self.tab_window.main_window.baseFields.append("Gnome")
+			
+			
+		#print "should say gnome**********",self.tab_window.main_window.baseFields		
 		
 		self.halflingButton=QPushButton("Halfling")
 		self.halflingButton.setToolTip("these wanderers love peace, food, hearth, and home, though home might be a wagon jostling along an dirt road or a raft floating downriver.<br>The diminutive halflings survive in a world full of larger creatures by avoiding notice or, barring that, avoiding offense.<br> Standing about 3 feet tall, they appear relatively harmless and so have managed to survive for centuries in the shadow of empires and on the edges of wars and political strife<br>------------Stats------------<br>Dexterity +2<br>Speed:25 Feet<br>Skills:Lucky, Brave, Halfling Nimbleness<br>Languages: Common and Halfling<br>Subrace: Yes")
@@ -36,6 +59,10 @@ class RaceWindow(QWidget):
 
 		self.dragonbornButton=QPushButton("Dragonborn")
 		self.dragonbornButton.setToolTip("Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension.<br> Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.<br>------------Stats------------<br>Strength +1 and Charisma +1<br>Speed:30 Feet<br>Skills:Dragonic Ancestry, Breath Weapon, Damage Resistance<br>Languages: Common and Dragonic<br>Subrace: No")
+		value=dragonborn.Dragonborn("good")		
+		self.tab_window.main_window.race=value
+		
+		
 
 		self.halforcButton=QPushButton("Half-Orc")
 		self.halforcButton.setToolTip("Whether united under the leadership of a mighty warlock or having fought to a standstill after years of conflict, orc and human tribes sometimes form alliances, joining forces into a larger horde to the terror of civilized lands nearby. When these alliances are sealed by marriages, half-orcs are born.<br> Some half-orcs rise to become proud chiefs of orc tribes, their human blood giving them an edge over their full-blooded orc rivals.<br>------------Stats------------<br>Strength +2 and Constitution +1<br>Speed:30 Feet<br>Skills:Darkvision, Menacing, Relentless Endurance, Savage Attack<br>Languages: Common and Orc<br>Subrace: No")		
