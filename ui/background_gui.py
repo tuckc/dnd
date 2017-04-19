@@ -5,13 +5,20 @@ from PyQt5.QtGui import *
 class BackgroundWindow(QWidget):
 	def __init__(self, parent):	
 		QTabWidget.__init__(self)
-		self.tab_window = parent	
+		self.tab_window = parent
+		self.setup()	
 
 	def setup(self):
-		self.setFixedSize(700, 460)
-		self.layout = QGridLayout()
-		self.setLayout(self.layout)
-		self.layout.addWidget(QPushButton('Background', self), 2, 2, 2, 2)
+		self.vbox = QVBoxLayout()
+		self.picbox = QHBoxLayout()
+		self.buttonbox = QHBoxLayout()
+
+		self.buttonbox.addWidget(QPushButton('Stats', self))
+
+		self.vbox.addLayout(self.picbox)	
+		self.vbox.addLayout(self.buttonbox)	
+
+		self.setLayout(self.vbox)
 		self.show()
 
 

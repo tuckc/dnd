@@ -34,9 +34,13 @@ class TabView(QTabWidget):
 	def setup(self):
 		self.addTab(WelcomeWindow(self), 'Welcome!')
 		self.addTab(RaceWindow(self), 'Race')
+		self.setTabEnabled(2, False)
 		self.addTab(StatsWindow(self), 'Stats')
+		self.setTabEnabled(3, False)
 		self.addTab(ClassWindow(self), 'Class')
+		self.setTabEnabled(4, False)
 		self.addTab(BackgroundWindow(self), 'Background')
+		self.setTabEnabled(5, False)
 		
 
 class WelcomeWindow(QWidget):
@@ -79,8 +83,12 @@ class StartButton(QPushButton):
 	def __init__(self, parent):
 		QPushButton.__init__(self, parent)
 		self.setText("Start")
-		self.setToolTip("Does Nothing")
+		self.parent = parent
+		self.clicked.connect(self.handleStart)
 
+	def handleStart(self):
+	
+		self.parent.tab_window.setTabEnabled(1,True)
 
 
 class QuitButton(QPushButton):
@@ -101,3 +109,4 @@ if __name__ == "__main__":
 	app = QApplication(sys.argv)
 	main_window = DND_CC_Window()
 	app.exec_()
+

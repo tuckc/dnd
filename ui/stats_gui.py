@@ -6,17 +6,17 @@ class StatsWindow(QWidget):
 	def __init__(self, parent):	
 		QTabWidget.__init__(self)
 		self.tab_window = parent
+		self.setup()
 
 	def setup(self):
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
 		self.buttonbox = QHBoxLayout()
 
-		self.buttonbox.addWidget(QPushButton('Stats', self), 2, 2, 2, 2)
+		self.buttonbox.addWidget(QPushButton('Stats', self))
 
 		self.vbox.addLayout(self.picbox)	
 		self.vbox.addLayout(self.buttonbox)	
 
-		self.setFixedSize(600, 600)
 		self.setLayout(self.vbox)
 		self.show()
