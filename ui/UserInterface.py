@@ -1,27 +1,65 @@
 #UserInterface.py
-from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import * 
 from PyQt5.QtGui import *
+from race_gui import *
+from stats_gui import *
+from class_gui import *
+from background_gui import *
 import sys
 
-class DND_CC_Window(QtWidgets.QWidget):
+
+
+class DND_CC_Window(QMainWindow):
 	def __init__(self):
-		QtWidgets.QWidget.__init__(self)
+		QMainWindow.__init__(self)
+		self.setGeometry(200, 200, 700, 700)
+		self.setWindowTitle("Dungeons and Dragons Character Creator")
+		self.baseFields = []
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(200, 200, 700, 700)
-		self.setWindowTitle("Dungeons and Dragons Character Creator")
+		self.tab_widget = TabView(self)
+		self.setCentralWidget(self.tab_widget)
+		self.show()
+
+
+
+class TabView(QTabWidget):
+	def __init__(self, parent):
+		QTabWidget.__init__(self)
+		self.main_window = parent
+		self.setup()
+
+	def setup(self):
+		self.addTab(WelcomeWindow(self), 'Welcome!')
+		self.addTab(RaceWindow(self), 'Race')
+		self.addTab(StatsWindow(self), 'Stats')
+		self.addTab(ClassWindow(self), 'Class')
+		self.addTab(BackgroundWindow(self), 'Background')
+		
+
+class WelcomeWindow(QWidget):
+	def __init__(self,parent):
+		QTabWidget.__init__(self)	
+		self.tab_window = parent
 		self.start_button = StartButton(self)
 		self.quit_button = QuitButton(self)
-		self.vbox = QtWidgets.QVBoxLayout()
-		self.picbox = QtWidgets.QHBoxLayout()
-		self.buttonbox = QtWidgets.QHBoxLayout()
+		self.vbox = QVBoxLayout()
+		self.picbox = QHBoxLayout()
+		self.buttonbox = QHBoxLayout()
 
 		self.label = QLabel(self)
 		self.pixmap = QPixmap('welcome.jpeg')
 		self.label.setPixmap(self.pixmap)
 		self.picbox.addWidget(self.label)
+
+		self.label2 = QLabel(self)
+		self.pixmap2 = QPixmap('welcometitle.jpg')
+		self.pixmap2 = self.pixmap2.scaledToWidth(self.width())
+		self.label2.setPixmap(self.pixmap2)
+		self.picbox.addWidget(self.label2)
+		self.picbox.setAlignment(self.label2, Qt.AlignCenter)
 
 
 		self.buttonbox.addWidget(self.start_button)
@@ -31,23 +69,25 @@ class DND_CC_Window(QtWidgets.QWidget):
 		self.vbox.addLayout(self.picbox)
 		self.vbox.addLayout(self.buttonbox)
 		self.show()
+	
 
 
-		self.resize(700, 700)
 
 
 
-class StartButton(QtWidgets.QPushButton):
+class StartButton(QPushButton):
 	def __init__(self, parent):
-		QtWidgets.QPushButton.__init__(self, parent)
+		QPushButton.__init__(self, parent)
 		self.setText("Start")
+		self.setToolTip("Does Nothing")
 
-class QuitButton(QtWidgets.QPushButton):
+
+
+class QuitButton(QPushButton):
 	def __init__(self, parent):
-		QtWidgets.QPushButton.__init__(self, parent)
+		QPushButton.__init__(self, parent)
 		self.setText("Quit")
-		self.clicked.connect(QtWidgets.qApp.quit)
-		
+		self.clicked.connect(qApp.quit)
 
 
 
@@ -58,6 +98,6 @@ if __name__ == "__main__":
 	'''
 	Code from slide 15 of lecture 17
 	'''
-	app = QtWidgets.QApplication(sys.argv)
+	app = QApplication(sys.argv)
 	main_window = DND_CC_Window()
 	app.exec_()

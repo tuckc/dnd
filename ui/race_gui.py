@@ -1,18 +1,17 @@
 #UserInterface.py
-from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import sys
 
-class DND_CC_Window(QtWidgets.QWidget):
-	def __init__(self):
-		QtWidgets.QWidget.__init__(self)
+class RaceWindow(QWidget):
+	def __init__(self, parent):
+		QWidget.__init__(self)
 		self.setup()
+		self.tab_window = parent
 
 	def setup(self):
-		self.setGeometry(200, 200, 700, 700)
-		self.setWindowTitle("Dungeons and Dragons Character Creator")
-		
+
 		self.gnomeButton=QPushButton("Gnome")
 		self.gnomeButton.setToolTip("Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.<br>Gnomes average slightly over 3 feet tall and weigh 40 to 45 pounds.<br>------------Stats------------<br>Intelligence +2<br>Speed:25 Feet<br>Skills:Darkvision, Gnome Cunning<br>Languages: Common and Gnomish<br>Subrace: Yes")
 		
@@ -41,15 +40,15 @@ class DND_CC_Window(QtWidgets.QWidget):
 		self.halforcButton=QPushButton("Half-Orc")
 		self.halforcButton.setToolTip("Whether united under the leadership of a mighty warlock or having fought to a standstill after years of conflict, orc and human tribes sometimes form alliances, joining forces into a larger horde to the terror of civilized lands nearby. When these alliances are sealed by marriages, half-orcs are born.<br> Some half-orcs rise to become proud chiefs of orc tribes, their human blood giving them an edge over their full-blooded orc rivals.<br>------------Stats------------<br>Strength +2 and Constitution +1<br>Speed:30 Feet<br>Skills:Darkvision, Menacing, Relentless Endurance, Savage Attack<br>Languages: Common and Orc<br>Subrace: No")		
 
-		self.vbox = QtWidgets.QVBoxLayout()
-		self.picbox = QtWidgets.QHBoxLayout()
-		self.buttonbox = QtWidgets.QHBoxLayout()
+		self.vbox = QVBoxLayout()
+		self.picbox = QHBoxLayout()
+		self.buttonbox = QHBoxLayout()
 
 		self.label = QLabel(self)
 		self.pixmap = QPixmap('race.jpg')
 		self.label.setPixmap(self.pixmap)
 		self.picbox.addWidget(self.label)
-
+		self.pixmap.scaled(self.width(),self.height())
 		
 		self.buttonbox.addWidget(self.gnomeButton)		
 		self.buttonbox.addWidget(self.halflingButton)		
@@ -75,6 +74,6 @@ if __name__ == "__main__":
 	'''
 	Code from slide 15 of lecture 17
 	'''
-	app = QtWidgets.QApplication(sys.argv)
+	app = QApplication(sys.argv)
 	main_window = DND_CC_Window()
 	app.exec_()
