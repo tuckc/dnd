@@ -25,19 +25,36 @@ class RaceWindow(QWidget):
 		self.tab_window = parent		
 		self.setup()
 		
-	#def handler(self,pickedRace):
-	#	if 
+	def handler(self,pickedRace,first=None,second=None,third=None):
+		if pickedRace == 'dwarf':
+			self.tab_window.main_window.race=dwarf.Dwarf(first,second)	
+		elif pickedRace == 'elf':
+			self.tab_window.main_window.race=elf.Elf(first,second,third)
+		if pickedRace == 'dragonborn':
+			#print pickedRace,"and ",first
+			self.tab_window.main_window.race=dragonborn.Dragonborn(first)
+			print "dragonborn charisma->",self.tab_window.main_window.race.charisma
+		elif pickedRace == 'gnome':
+			self.tab_window.main_window.race=gnome.Gnome(first)
+		elif pickedRace == 'halfelf':
+			self.tab_window.main_window.race=halfelf.Halfelf(first,second,third)
+		elif pickedRace == 'halfling':
+			self.tab_window.main_window.race=halfling.Halfling(first)
+		elif pickedRace == 'halforc':
+			self.tab_window.main_window.race=halforc.Halforc()
+			print "halforc charisma->",self.tab_window.main_window.race.charisma
+		elif pickedRace == 'human':
+			self.tab_window.main_window.race=human.Human(first)
+		elif pickedRace == 'tiefling':
+			self.tab_window.main_window.race=tiefling.Tiefling()
+			print "tiefling charisma->",self.tab_window.main_window.race.charisma
 			
 
-	def setup(self):
-		#value=gnome.Gnome()
-		#print "-------------------------",value	
+	def setup(self):	
 		self.gnomeButton=QPushButton('Gnome')
 		self.gnomeButton.setToolTip("Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.<br>Gnomes average slightly over 3 feet tall and weigh 40 to 45 pounds.<br>------------Stats------------<br>Intelligence +2<br>Speed:25 Feet<br>Skills:Darkvision, Gnome Cunning<br>Languages: Common and Gnomish<br>Subrace: Yes")
-		#self.tab_window.main_window.baseFields.append("Gnome")
-			
-			
-		#print "should say gnome**********",self.tab_window.main_window.baseFields		
+		
+						
 		
 		self.halflingButton=QPushButton("Halfling")
 		self.halflingButton.setToolTip("these wanderers love peace, food, hearth, and home, though home might be a wagon jostling along an dirt road or a raft floating downriver.<br>The diminutive halflings survive in a world full of larger creatures by avoiding notice or, barring that, avoiding offense.<br> Standing about 3 feet tall, they appear relatively harmless and so have managed to survive for centuries in the shadow of empires and on the edges of wars and political strife<br>------------Stats------------<br>Dexterity +2<br>Speed:25 Feet<br>Skills:Lucky, Brave, Halfling Nimbleness<br>Languages: Common and Halfling<br>Subrace: Yes")
@@ -53,19 +70,20 @@ class RaceWindow(QWidget):
 
 		self.tieflingButton=QPushButton("Tiefling")
 		self.tieflingButton.setToolTip("To be greeted with stares and whispers, to suffer violence and insult on the street, to see mistrust and fear in every eye.<br> This is the lot of the tiefling. <br>Their appearance and their nature are not their fault but the result of an ancient sin.<br>------------Stats------------<br>Charisma +2 and Intelligence +1<br>Speed:30 Feet<br>Skills:Darkvision, Hellish Resistance, Infernal Legacy<br>Languages: Common and Infernal<br>Subrace: No")
+		self.tieflingButton.clicked.connect(lambda :self.handler("tiefling"))
 
 		self.humanButton=QPushButton("Human")
 		self.humanButton.setToolTip("In the reckonings of most worlds, humans are the youngest of the common races, late to arrive on the world scene and short-lived in comparison to dwarves, elves, and dragons.<br>Whatever drives them, humans are the innovators, the achievers, and the pioneers of the worlds.<br>------------Stats------------<br>Each Base Score +1<br>Speed:30 Feet<br>Skills: 1 Skill and Feat of your choice<br>Languages: Common and Another of Your Choice<br>Subrace: No")
 
 		self.dragonbornButton=QPushButton("Dragonborn")
 		self.dragonbornButton.setToolTip("Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension.<br> Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.<br>------------Stats------------<br>Strength +1 and Charisma +1<br>Speed:30 Feet<br>Skills:Dragonic Ancestry, Breath Weapon, Damage Resistance<br>Languages: Common and Dragonic<br>Subrace: No")
-		value=dragonborn.Dragonborn("good")		
-		self.tab_window.main_window.race=value
+		self.dragonbornButton.clicked.connect(lambda :self.handler("dragonborn","blue"))		
 		
 		
 
 		self.halforcButton=QPushButton("Half-Orc")
-		self.halforcButton.setToolTip("Whether united under the leadership of a mighty warlock or having fought to a standstill after years of conflict, orc and human tribes sometimes form alliances, joining forces into a larger horde to the terror of civilized lands nearby. When these alliances are sealed by marriages, half-orcs are born.<br> Some half-orcs rise to become proud chiefs of orc tribes, their human blood giving them an edge over their full-blooded orc rivals.<br>------------Stats------------<br>Strength +2 and Constitution +1<br>Speed:30 Feet<br>Skills:Darkvision, Menacing, Relentless Endurance, Savage Attack<br>Languages: Common and Orc<br>Subrace: No")		
+		self.halforcButton.setToolTip("Whether united under the leadership of a mighty warlock or having fought to a standstill after years of conflict, orc and human tribes sometimes form alliances, joining forces into a larger horde to the terror of civilized lands nearby. When these alliances are sealed by marriages, half-orcs are born.<br> Some half-orcs rise to become proud chiefs of orc tribes, their human blood giving them an edge over their full-blooded orc rivals.<br>------------Stats------------<br>Strength +2 and Constitution +1<br>Speed:30 Feet<br>Skills:Darkvision, Menacing, Relentless Endurance, Savage Attack<br>Languages: Common and Orc<br>Subrace: No")
+		self.halforcButton.clicked.connect(lambda :self.handler("halforc"))		
 
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
