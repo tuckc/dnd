@@ -20,7 +20,8 @@ import halfelf
 import tiefling
 import dwarf
 import subrace_dwarf_gui
-
+import ancestry_dragonborn_gui
+import subrace_gnome_gui
 
 class RaceWindow(QWidget):
 	def __init__(self, parent):
@@ -33,13 +34,13 @@ class RaceWindow(QWidget):
 			self.race = subrace_dwarf_gui.SubraceDwarf(self)
 
 		elif pickedRace == 'elf':
-			self.tab_window.main_window.race=elf.Elf(first,second,third)
-		if pickedRace == 'dragonborn':
+			self.race=elf.Elf(first,second,third)
+		elif pickedRace == 'dragonborn':
 			#print pickedRace,"and ",first
-			self.tab_window.main_window.race=dragonborn.Dragonborn(first)
-			print "dragonborn charisma->",self.tab_window.main_window.race.charisma
+			self.race=ancestry_dragonborn_gui.AncestryDragonborn(self)
+			#print "dragonborn charisma->",self.tab_window.main_window.race.features.charisma
 		elif pickedRace == 'gnome':
-			self.tab_window.main_window.race=gnome.Gnome(first)
+			self.race=subrace_gnome_gui.SubraceGnome(self)
 		elif pickedRace == 'halfelf':
 			self.tab_window.main_window.race=halfelf.Halfelf(first,second,third)
 		elif pickedRace == 'halfling':
@@ -57,6 +58,7 @@ class RaceWindow(QWidget):
 	def setup(self):	
 		self.gnomeButton=QPushButton('Gnome')
 		self.gnomeButton.setToolTip("Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.<br>Gnomes average slightly over 3 feet tall and weigh 40 to 45 pounds.<br>------------Stats------------<br>Intelligence +2<br>Speed:25 Feet<br>Skills:Darkvision, Gnome Cunning<br>Languages: Common and Gnomish<br>Subrace: Yes")
+		self.gnomeButton.clicked.connect(lambda :self.handler("gnome"))
 		
 						
 		
@@ -82,7 +84,7 @@ class RaceWindow(QWidget):
 
 		self.dragonbornButton=QPushButton("Dragonborn")
 		self.dragonbornButton.setToolTip("Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension.<br> Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.<br>------------Stats------------<br>Strength +1 and Charisma +1<br>Speed:30 Feet<br>Skills:Dragonic Ancestry, Breath Weapon, Damage Resistance<br>Languages: Common and Dragonic<br>Subrace: No")
-		self.dragonbornButton.clicked.connect(lambda :self.handler("dragonborn","blue"))		
+		self.dragonbornButton.clicked.connect(lambda :self.handler("dragonborn"))		
 		
 		
 		
