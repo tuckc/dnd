@@ -2,7 +2,7 @@
 fix radiobutton isSelected at end
 '''
 #UserInterface.py
-from PyQt5 import QtWidgets,QtCore
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import sys
@@ -10,9 +10,9 @@ sys.path.append(sys.path[0][:-2]+"races")
 #print 'NEW path --------------->', sys.path
 import dwarf
 
-class SubraceDwarf(QtWidgets.QWidget):
+class SubraceDwarf(QWidget):
 	def __init__(self, parent):
-		QtWidgets.QWidget.__init__(self)
+		QWidget.__init__(self)
 		self.parent_window = parent
 		self.setup()
 
@@ -37,12 +37,12 @@ class SubraceDwarf(QtWidgets.QWidget):
 		#self.addButton(self.hillButton)
 		#self.addButton(self.mountainButton)
 
-		self.vbox = QtWidgets.QVBoxLayout()
-		self.picbox = QtWidgets.QHBoxLayout()
-		self.buttonbox = QtWidgets.QHBoxLayout()
+		self.vbox = QVBoxLayout()
+		self.picbox = QHBoxLayout()
+		self.buttonbox = QHBoxLayout()
 
-		#self.picbox = QtWidgets.QHBoxLayout()
-		self.buttongroup = QtWidgets.QButtonGroup()
+		#self.picbox = QHBoxLayout()
+		self.buttongroup = QButtonGroup()
 		#self.buttongroup.addButton(self.dwarfButton)
 		self.buttongroup.addButton(self.hillButton)
 		self.buttongroup.addButton(self.mountainButton)
@@ -92,37 +92,94 @@ class SubraceDwarf(QtWidgets.QWidget):
 		self.resize(800, 800)
 
 	def closeEvent(self,event):
-		if self.mountainButton.isSelected():
-			self.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf",pickTool(self, self.parent_window))
-		elif self.hillButton.isSelected():
-			self.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf", pickTool(self,self.parent_window))
+		if self.mountainButton.isChecked():
+			self.ptool = PickTool(self,"Mountain Dwarf")
+			self.ptool.show()
+		elif self.hillButton.isChecked():
+			self.ptool = PickTool(self,"Hill Dwarf")
+			self.ptool.show()
 		else:
-			print("No sub-race selected")
+			print("No subrace selected")
+			event.accept()
+
+		event.accept()
 
 
-class pickTool(QtWidgets.QWidget):
-	def __init__(self,parent):
-		QtWidgets.QWidget.__init__(self)
-		self.setWindowTitle("Pick Dwarven Tool")
+
+class PickTool(QWidget):
+	def __init__(self, parent, race):
+		QWidget.__init__(self)
 		self.parent = parent
+		self.race = race
+		self.setWindowTitle("Pick Dwarven Tool")
 		self.show()
 		self.setup()
 
 	def setup(self):
 		self.setGeometry(100,100,500,500)
+		self.vertbox = QVBoxLayout()
 		self.label = QLabel()
-		self.label.setText("List the 3 kinds of tools here")
-		#use radiobuttons
+		self.label.setText("Choose your type of tool here")
+		self.mason = QRadioButton("Mason's Tools")
+		self.mason.setToolTip("")
+		self.smith = QRadioButton("Smith's Tools")
+		self.mason.setToolTip("")
+		self.brewer = QRadioButton("Brewer's Supplies")
+		self.mason.setToolTip("")
+		self.toolButtonGroup = QButtonGroup()
+		self.toolButtonGroup.addButton(self.mason)
+		self.toolButtonGroup.addButton(self.smith)
+		self.toolButtonGroup.addButton(self.brewer)
+		self.setLayout(self.vertbox)
+		self.vertbox.addWidget(self.mason)
+		self.vertbox.addWidget(self.smith)
+		self.vertbox.addWidget(self.brewer)
 
 	def closeEvent(self,event):
-		pass
-		#pass the tool choice back into the parent
+		if self.mason.isChecked():
+			if self.race == "Mountain Dwarf":
+				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Mason's Tools")
+			elif self.race == "Hill Dwarf":
+				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Mason's Tools")
+			else:
+				print ("Invalid Race")
+				event.accept()
+
+		elif self.smith.isChecked():
+			if self.race == "Mountain Dwarf":
+				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Smith's Tools")
+			elif self.race == "Hill Dwarf":
+				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Smith's Tools")
+			else:
+				print ("Invalid Race")
+				event.accept()
+
+
+		elif self.brewer.isChecked():
+			if self.race == "Mountain Dwarf":
+				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Brewer's Supplies")
+			elif self.race == "Hill Dwarf":
+				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Brewer's Supplies")
+
+			else:
+				print ("Invalid Race")
+				event.accept()
+		else:
+			print("No tools chosen")
+			event.accept()
+
+		event.accept()
+
+
+
+
+
 
 	
 
 if __name__ == "__main__":
 
-	app = QtWidgets.QApplication(sys.argv)
-	mainmain = QtWidgets.QMainWindow()
+	app = QApplication(sys.argv)
+	mainmain = QMainWindow()
 	main_window = SubraceDwarf(mainmain)
 	app.exec_()
