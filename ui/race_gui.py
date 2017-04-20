@@ -19,6 +19,8 @@ import elf
 import halfelf
 import tiefling
 import dwarf
+import subrace_dwarf_gui
+
 
 class RaceWindow(QWidget):
 	def __init__(self, parent):
@@ -28,7 +30,8 @@ class RaceWindow(QWidget):
 		
 	def handler(self,pickedRace,first=None,second=None,third=None):
 		if pickedRace == 'dwarf':
-			self.tab_window.main_window.race=dwarf.Dwarf(first,second)	
+			self.race = subrace_dwarf_gui.SubraceDwarf(self)
+
 		elif pickedRace == 'elf':
 			self.tab_window.main_window.race=elf.Elf(first,second,third)
 		if pickedRace == 'dragonborn':
@@ -62,6 +65,7 @@ class RaceWindow(QWidget):
 		
 		self.dwarfButton=QPushButton("Dwarf")
 		self.dwarfButton.setToolTip("Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal.<br> Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller.<br> Their courage and endurance are also easily a match for any of the larger folk.<br>------------Stats------------<br>Constitution +2<br>Speed:25 Feet<br>Skills:Darkvision, Dwarven Resilience, Dwarven Combat Training, Tool Proficiency, Stonecunning<br>Languages: Dwarvish<br>Subrace: Yes")
+		self.dwarfButton.clicked.connect(lambda :self.handler("dwarf"))
 
 		self.elfButton=QPushButton("Elf")
 		self.elfButton.setToolTip("Elves love nature and magic, art and artistry, music and poetry, and the good things of the world.<br>With their unearthly grace and fine features, elves appear hauntingly beautiful to humans and members of many other races.<br>------------Stats------------<br>Dexterity +2<br>Speed:30 Feet<br>Skills:Darkvision, Keen Senses, Fey Ancestry, Trance<br>Languages: Common and Elvish<br>Subrace: Yes")
@@ -79,6 +83,7 @@ class RaceWindow(QWidget):
 		self.dragonbornButton=QPushButton("Dragonborn")
 		self.dragonbornButton.setToolTip("Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension.<br> Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.<br>------------Stats------------<br>Strength +1 and Charisma +1<br>Speed:30 Feet<br>Skills:Dragonic Ancestry, Breath Weapon, Damage Resistance<br>Languages: Common and Dragonic<br>Subrace: No")
 		self.dragonbornButton.clicked.connect(lambda :self.handler("dragonborn","blue"))		
+		
 		
 		
 
@@ -105,6 +110,7 @@ class RaceWindow(QWidget):
 		self.buttonbox.addWidget(self.humanButton)
 		self.buttonbox.addWidget(self.dragonbornButton)
 		self.buttonbox.addWidget(self.halforcButton)
+
 		
 
 		self.setLayout(self.vbox)
@@ -121,5 +127,5 @@ if __name__ == "__main__":
 	Code from slide 15 of lecture 17
 	'''
 	app = QApplication(sys.argv)
-	main_window = DND_CC_Window()
+	main_window = RaceWindow()
 	app.exec_()
