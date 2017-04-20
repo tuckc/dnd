@@ -7,8 +7,9 @@ import sys
 #print sys.path
 #print '---------------------------------------'
 sys.path.append(sys.path[0][:-2]+"races")
+sys.path.append(sys.path[0][:-2])
 #print 'NEW path --------------->', sys.path
-
+import ButtonScrollBar
 import dragonborn
 import human
 import gnome

@@ -15,7 +15,7 @@ class DND_CC_Window(QMainWindow):
 		QMainWindow.__init__(self)
 		self.setGeometry(200, 200, 700, 700)
 		self.setWindowTitle("Dungeons and Dragons Character Creator")
-		self.baseFields = []
+		#self.baseFields = {}
 		self.setup()
 
 	def setup(self):
