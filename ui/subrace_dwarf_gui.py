@@ -1,6 +1,4 @@
-'''
-fix radiobutton isSelected at end
-'''
+
 #UserInterface.py
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import *
@@ -17,7 +15,7 @@ class SubraceDwarf(QWidget):
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(200, 200, 700, 700)
+		self.setGeometry(50, 50, 500, 500)
 		self.setWindowTitle("Dungeons and Dragons Character Creator: Dwarf Subrace")
 		
 		self.dwarfTitle=QLabel()
@@ -115,7 +113,7 @@ class PickTool(QWidget):
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(100,100,500,500)
+		self.setGeometry(50,50,400,400)
 		self.vertbox = QVBoxLayout()
 		self.label = QLabel()
 		self.label.setText("Choose your type of tool here")

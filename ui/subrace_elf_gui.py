@@ -137,7 +137,7 @@ class PickCantrip(QWidget):
 
 
 	def setup(self):
-		self.setGeometry(100,100,400,400)
+		self.setGeometry(50,50,400,400)
 		self.vertbox = QVBoxLayout()
 		self.label = QLabel()
 		self.label.setText("Choose your Cantrip")
@@ -150,16 +150,17 @@ class PickCantrip(QWidget):
 
 	def init_cantrips(self,level,jsclass):
 		self.buttonidmapping = {}
-		self.idcounter = 1
+		self.ids = 0
 		for each in jsonobject:
 			if each['level'] == level and each['class'].find(jsclass) > -1:
 				newbutton = QRadioButton(each['name'])
 				newbutton.setToolTip(each['desc'])
-				self.spellButtons.setId(newbutton,self.idcounter)
-				self.buttonidmapping[self.idcounter] = each['name']
+				print(each['name'],"button's id is", self.ids)
+				self.spellButtons.setId(newbutton,self.ids)
+				self.buttonidmapping[each['name']] = self.ids
 				self.spellButtons.addButton(newbutton)
 				self.vertbox.addWidget(newbutton)
-				self.idcounter +=1
+				self.ids +=1
 
 
 		self.bottombuttonbox = QHBoxLayout()
@@ -180,11 +181,18 @@ class PickCantrip(QWidget):
 
 
 	def sendSpell(self):
+		print(self.spellButtons.checkedId(),"is checkedID")
 		if self.spellButtons.checkedId() != -1:
+			self.checkedId = (self.spellButtons.checkedId() * -1) -1
 			for each in self.buttonidmapping.keys():
-				if self.buttonidmapping[each] == self.spellButtons.checkedId():
+				if self.buttonidmapping[each] == self.checkedId:
 					self.cantrip = each
+					print ("Cantrip set to ",each)
 					break
+				else:
+					print ("self.spellButtons.checkedId() is currently",self.checkedId,"and self.buttonidmapping[each] is",self.buttonidmapping[each], "and each is", each)
+		else:
+			print("No button selected")
 
 
 	def closeEvent(self,event):
@@ -212,7 +220,7 @@ class PickLanguage(QWidget):
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(100,100,400,400)
+		self.setGeometry(50,50,400,400)
 		self.vertbox = QVBoxLayout()
 		self.label = QLabel()
 		self.label.setText("Choose your Language")
