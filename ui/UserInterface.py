@@ -13,7 +13,7 @@ import sys
 class DND_CC_Window(QMainWindow):
 	def __init__(self):
 		QMainWindow.__init__(self)
-		self.setGeometry(200, 200, 500, 500)
+		self.setGeometry(0, 0, 500, 500)
 		self.setWindowTitle("Dungeons and Dragons Character Creator")
 		#self.baseFields = {}
 		self.setup()
@@ -47,7 +47,7 @@ class WelcomeWindow(QWidget):
 	def __init__(self,parent):
 		QTabWidget.__init__(self)	
 		self.tab_window = parent
-		self.start_button = StartButton(self)
+		#self.start_button = StartButton(self)
 		self.quit_button = QuitButton(self)
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
@@ -66,7 +66,7 @@ class WelcomeWindow(QWidget):
 		self.picbox.setAlignment(self.label2, Qt.AlignCenter)
 
 
-		self.buttonbox.addWidget(self.start_button)
+		#self.buttonbox.addWidget(self.start_button)
 		self.buttonbox.addWidget(self.quit_button)
 		
 		self.setLayout(self.vbox)
@@ -79,7 +79,7 @@ class WelcomeWindow(QWidget):
 
 
 
-class StartButton(QPushButton):
+'''class StartButton(QPushButton):
 	def __init__(self, parent):
 		QPushButton.__init__(self, parent)
 		self.setText("Start")
@@ -88,7 +88,7 @@ class StartButton(QPushButton):
 
 	def handleStart(self):
 		self.parent.tab_window.setTabEnabled(1,True)
-
+'''
 
 class QuitButton(QPushButton):
 	def __init__(self, parent):

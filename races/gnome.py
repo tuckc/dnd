@@ -22,3 +22,5 @@ class Gnome(Race):
         self.constitution = 1
         self.features.append('Artificer\'s Lore')
         self.features.append('Tinker')
+    def __str__(self):
+        return super.__str__(self)

@@ -8,4 +8,6 @@ class Halforc(Race):
         self.languages = ['Common', 'Orc']
         self.features = ['Darkvision', 'Relentless Endurance', 'Savage Attacks']
         self.proficiencies = ['Intimidation']
+    def __str__(self):
+        return super.__str__(self)
         

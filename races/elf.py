@@ -36,3 +36,6 @@ class Elf(Race):
         self.cantrips.append('Dancing Light')
         self.other.extend(['Rapier', 'Shortsword', 'Hand Crossbow'])
         self.features[self.features.index('Darkvision')] = 'Superior Darkvision'
+
+    def __str__(self):
+        return super.__str__(self)

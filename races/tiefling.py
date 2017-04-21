@@ -8,3 +8,5 @@ class Tiefling(Race):
         self.languages = ['Common', 'Infernal']
         self.features = ['Darkvision', 'Hellish Resistance', 'Infernal Legacy']
         self.cantrips = ['Thaumaturgy']
+    def __str__(self):
+        return super.__str__(self)

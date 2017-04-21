@@ -11,3 +11,5 @@ class Dragonborn(Race):
             'Breath Weapon',
             'Damage Resistance(' + ancestry + ')'
         ]
+    def __str__(self):
+        return super.__str__(self)

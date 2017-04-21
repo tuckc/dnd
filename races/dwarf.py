@@ -31,4 +31,6 @@ class Dwarf(Race):
     def _mountain_dwarf(self):
         self.strength = 2
         self.other.extend(['Light Armor', 'Medium Armor'])
-        
+
+    def __str__(self):
+        return super.__str__(self)
