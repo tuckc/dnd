@@ -13,7 +13,7 @@ class ClassWindow(QWidget):
 		self.picbox = QHBoxLayout()
 		self.buttonbox = QHBoxLayout()
 
-		self.buttonbox.addWidget(QPushButton('Stats', self))
+		self.buttonbox.addWidget(QPushButton('Classes', self))
 
 		self.vbox.addLayout(self.picbox)	
 		self.vbox.addLayout(self.buttonbox)	

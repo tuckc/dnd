@@ -34,42 +34,47 @@ class RaceWindow(QWidget):
 		if pickedRace == 'dwarf':
 			self.race = subrace_dwarf_gui.SubraceDwarf(self)
 			#print "dwarf charisma->",self.tab_window.main_window.race.charisma
+			#SUBRACE PAGES FINISHED
 
 		elif pickedRace == 'elf':
 			self.race=subrace_elf_gui.SubraceElf(self)
 			#print "elf charisma->",self.tab_window.main_window.race.charisma
+			#SUBRACE PAGES FINISHED
 
 
 		elif pickedRace == 'dragonborn':
 			self.race=ancestry_dragonborn_gui.AncestryDragonborn(self)
 			#print "dragonborn charisma->",self.tab_window.main_window.race.features.charisma
 		
+		elif pickedRace == 'halfling':
+			self.race=subrace_halfling_gui.SubraceHalfling(self)
+			#print "halfling charisma->",self.tab_window.main_window.race.charisma
 
 		elif pickedRace == 'gnome':
 			self.race=subrace_gnome_gui.SubraceGnome(self)
 			#print "gnome charisma->",self.tab_window.main_window.race.charisma
 
 
+
+
+		elif pickedRace == 'human':
+			self.race=human.Human()
+			#print "human charisma->",self.tab_window.main_window.race.charisma
+
+
+
 		elif pickedRace == 'halfelf':
-			self.tab_window.main_window.race=halfelf.Halfelf(first,second,third)
+			self.race=halfelf.Halfelf()
 			#print "halfelf charisma->",self.tab_window.main_window.race.charisma
 
 
-		elif pickedRace == 'halfling':
-			self.race=subrace_halfling_gui.SubraceHalfling(self)
-			#print "halfling charisma->",self.tab_window.main_window.race.charisma
-
-
 		elif pickedRace == 'halforc':
-			self.tab_window.main_window.race=halforc.Halforc()
+			self.race=halforc.Halforc()
 			#print "halforc charisma->",self.tab_window.main_window.race.charisma
 		
-		elif pickedRace == 'human':
-			self.tab_window.main_window.race=human.Human(first)
-			#print "human charisma->",self.tab_window.main_window.race.charisma
 		
 		elif pickedRace == 'tiefling':
-			self.tab_window.main_window.race=tiefling.Tiefling()
+			self.race=tiefling.Tiefling()
 			#print "tiefling charisma->",self.tab_window.main_window.race.charisma
 		
 

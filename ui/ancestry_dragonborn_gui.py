@@ -142,7 +142,6 @@ class AncestryDragonborn(QWidget):
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("White")
 		else:
 			print("No Ancestry selected")
-			event.accept()
 
 		event.accept()
 
