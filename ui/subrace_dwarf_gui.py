@@ -30,38 +30,38 @@ class SubraceDwarf(QWidget):
 		self.mountainButton=QRadioButton("Mountain Dwarf")
 		self.mountainButton.setToolTip("As a mountain dwarf, you're strong and hardy, accustomed to a difficult life in rugged terrain.<br>------------Stats------------<br>All Dwarf Base stats<br>Strength +2<br>Skills:Dwarven Armor Training")
 		
-		
-		#self.addButton(self.dwarfButton)
-		#self.addButton(self.hillButton)
-		#self.addButton(self.mountainButton)
+		self.applyButton = QPushButton("Apply")
+		self.nextButton = QPushButton("Next")
+
 
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
 		self.buttonbox = QHBoxLayout()
+		self.applynextbuttonbox = QHBoxLayout()
 
-		#self.picbox = QHBoxLayout()
+
 		self.buttongroup = QButtonGroup()
-		#self.buttongroup.addButton(self.dwarfButton)
 		self.buttongroup.addButton(self.hillButton)
 		self.buttongroup.addButton(self.mountainButton)
 
-		#self.vbox.addWidget(self.buttongroup)
+		self.applynextbuttonbox.addWidget(self.applyButton)
+		self.applynextbuttonbox.addWidget(self.nextButton)
 
-		#self.dwarflabel = QLabel(self)
+
+		self.applyButton.clicked.connect(self.applyRace)
+		self.nextButton.clicked.connect(self.close)
+
 		self.hilllabel = QLabel(self)
 		self.hilllabel.resize(self.size()*.25)
 		self.mountainlabel = QLabel(self)
 		self.mountainlabel.resize(self.size()*.25)
 
-		#self.dwarfpixmap = QPixmap('dwarf.jpg')
 		self.hillpixmap = QPixmap('hilldwarf.jpg').scaled(self.hilllabel.size())
 		self.mountainpixmap = QPixmap('mountaindwarf.jpg').scaled(self.mountainlabel.size())
 
-		#self.dwarflabel.setPixmap(self.dwarfpixmap)
 		self.hilllabel.setPixmap(self.hillpixmap)
 		self.mountainlabel.setPixmap(self.mountainpixmap)
 
-		#self.vbox.addWidget(self.dwarflabel)
 		self.vbox.addWidget(self.dwarfTitle)
 		self.vbox.addWidget(self.dwarfDetails)
 		
@@ -76,14 +76,23 @@ class SubraceDwarf(QWidget):
 		self.buttonbox.addWidget(self.mountainButton)
 
 		self.vbox.addLayout(self.buttonbox)
+		self.vbox.addLayout(self.applynextbuttonbox)
 		
 		
 		
 
 		self.setLayout(self.vbox)
-		#self.vbox.addLayout(self.picbox)
-		#self.vbox.addLayout(self.buttonbox)
+
 		self.show()
+
+	def applyRace(self):
+		if self.mountainButton.isChecked():
+			print("Mountain Dwarf Selected")
+		elif self.hillButton.isChecked():
+			print("Hill Dwarf Selected")
+		else:
+			print("No subrace selected")
+
 
 
 
@@ -97,7 +106,6 @@ class SubraceDwarf(QWidget):
 			self.ptool.show()
 		else:
 			print("No subrace selected")
-			event.accept()
 
 		event.accept()
 
@@ -108,7 +116,7 @@ class PickTool(QWidget):
 		QWidget.__init__(self)
 		self.parent = parent
 		self.race = race
-		self.setWindowTitle("Pick Dwarven Tool")
+		self.setWindowTitle("Pick Dwarven Tool Set")
 		self.show()
 		self.setup()
 
@@ -116,54 +124,95 @@ class PickTool(QWidget):
 		self.setGeometry(50,50,400,400)
 		self.vertbox = QVBoxLayout()
 		self.label = QLabel()
-		self.label.setText("Choose your type of tool here")
+		self.label.resize(self.size()*.25)
+		self.label.setText("Choose your tools here")
 		self.mason = QRadioButton("Mason's Tools")
 		self.mason.setToolTip("")
 		self.smith = QRadioButton("Smith's Tools")
 		self.mason.setToolTip("")
 		self.brewer = QRadioButton("Brewer's Supplies")
 		self.mason.setToolTip("")
+
 		self.toolButtonGroup = QButtonGroup()
 		self.toolButtonGroup.addButton(self.mason)
 		self.toolButtonGroup.addButton(self.smith)
 		self.toolButtonGroup.addButton(self.brewer)
+
+		self.masonpic = QLabel(self)
+		self.masonpic.resize(self.size()*.25)
+		self.smithpic = QLabel(self)
+		self.smithpic.resize(self.size()*.25)
+		self.brewerpic = QLabel(self)
+		self.brewerpic.resize(self.size()*.25)
+
+		self.masonpixmap = QPixmap('masontools.jpeg').scaled(self.masonpic.size())
+		self.smithpixmap = QPixmap('smithtools.jpeg').scaled(self.smithpic.size())
+		self.brewerpixmap = QPixmap('brewersupplies.jpeg').scaled(self.brewerpic.size())
+
+		self.masonpic.setPixmap(self.masonpixmap)
+		self.smithpic.setPixmap(self.smithpixmap)
+		self.brewerpic.setPixmap(self.brewerpixmap)
+
+
+
+		self.doneButton = QPushButton("Done")
+		self.doneButton.setToolTip("Confirm your selection and return to race window")
+		self.doneButton.clicked.connect(self.close)
+
+
 		self.setLayout(self.vertbox)
+		self.vertbox.addWidget(self.label)
+		self.vertbox.addWidget(self.masonpic)
 		self.vertbox.addWidget(self.mason)
+		self.vertbox.addWidget(self.smithpic)
 		self.vertbox.addWidget(self.smith)
+		self.vertbox.addWidget(self.brewerpic)
 		self.vertbox.addWidget(self.brewer)
+		self.vertbox.addWidget(self.doneButton)
+
+
+
 
 	def closeEvent(self,event):
 		if self.mason.isChecked():
 			if self.race == "Mountain Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Mason's Tools")
+				print("Character set to")
+				print(self.parent_window.tab_window.main_window.race)
 			elif self.race == "Hill Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Mason's Tools")
+				print("Character set to")
+				print(self.parent.parent_window.tab_window.main_window.race)
 			else:
 				print ("Invalid Race")
-				event.accept()
+				
 
 		elif self.smith.isChecked():
 			if self.race == "Mountain Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Smith's Tools")
+				print("Character set to")
+				print(self.parent.parent_window.tab_window.main_window.race)
 			elif self.race == "Hill Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Smith's Tools")
+				print("Character set to")
+				print(self.parent.parent_window.tab_window.main_window.race)
 			else:
 				print ("Invalid Race")
-				event.accept()
 
 
 		elif self.brewer.isChecked():
 			if self.race == "Mountain Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Brewer's Supplies")
+				print("Character set to")
+				print(self.parent.parent_window.tab_window.main_window.race)
 			elif self.race == "Hill Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Brewer's Supplies")
-
+				print("Character set to")
+				print(self.parent.parent_window.tab_window.main_window.race)
 			else:
 				print ("Invalid Race")
-				event.accept()
 		else:
 			print("No tools chosen")
-			event.accept()
 
 		event.accept()
 

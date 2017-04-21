@@ -83,13 +83,13 @@ class SubraceElf(QWidget):
 		self.vbox.addLayout(self.bottombuttonbox)
 
 		self.applyButton = QPushButton("Apply")
-		self.applyButton.setToolTip("This will apply your choice of subrace")
+		self.applyButton.setToolTip("This will apply your choice of subrace and exit: unless you are a High Elf")
 		self.bottombuttonbox.addWidget(self.applyButton)
 		self.applyButton.clicked.connect(self.applyRace)
 
 
-		self.doneButton = QPushButton("Done")
-		self.doneButton.setToolTip("Exit this window and choose your cantrip: If you are a High Elf")
+		self.doneButton = QPushButton("Done/Next")
+		self.doneButton.setToolTip("Exit this window and choose your cantrip: if you are a High Elf")
 		self.bottombuttonbox.addWidget(self.doneButton)
 		self.doneButton.clicked.connect(self.close)
 		
@@ -106,7 +106,8 @@ class SubraceElf(QWidget):
 		elif self.darkButton.isChecked():
 			self.parent_window.tab_window.main_window.race = elf.Elf("Dark Elf (Drow)")
 		elif self.highButton.isChecked():
-			print("High Elf Selected")
+			pass
+			#print("High Elf Selected")
 
 
 
@@ -117,10 +118,16 @@ class SubraceElf(QWidget):
 			self.pCan = PickCantrip(self,"High Elf")
 			self.pCan.show()
 		else:
-			print("Closing subrace elf window and printing")
-			print(self.parent_window.tab_window.main_window.race)
-			print("Just printed from subrace elf window")
-
+			if self.woodButton.isChecked():
+				self.parent_window.tab_window.main_window.race = elf.Elf("Wood Elf")
+				print("Subrace chosen, character now ")
+				print(self.parent_window.tab_window.main_window.race)
+			elif self.darkButton.isChecked():
+				self.parent_window.tab_window.main_window.race = elf.Elf("Dark Elf (Drow)")
+				print("Subrace chosen, character now ")
+				print(self.parent_window.tab_window.main_window.race)
+			else:
+				print("No subrace chosen")
 		event.accept()
 
 
@@ -155,7 +162,7 @@ class PickCantrip(QWidget):
 			if each['level'] == level and each['class'].find(jsclass) > -1:
 				newbutton = QRadioButton(each['name'])
 				newbutton.setToolTip(each['desc'])
-				print(each['name'],"button's id is", self.ids)
+				#print(each['name'],"button's id is", self.ids)
 				self.spellButtons.setId(newbutton,self.ids)
 				self.buttonidmapping[each['name']] = self.ids
 				self.spellButtons.addButton(newbutton)
@@ -172,34 +179,32 @@ class PickCantrip(QWidget):
 		self.applyButton.clicked.connect(self.sendSpell)
 
 
-		self.doneButton = QPushButton("Done")
-		self.doneButton.setToolTip("Exit this window and choose your language")
-		self.bottombuttonbox.addWidget(self.doneButton)
-		self.doneButton.clicked.connect(self.close)
+		self.nextButton = QPushButton("Next")
+		self.nextButton.setToolTip("Close this window and choose your language")
+		self.bottombuttonbox.addWidget(self.nextButton)
+		self.nextButton.clicked.connect(self.close)
 		self.show()
 
 
 
 	def sendSpell(self):
-		print(self.spellButtons.checkedId(),"is checkedID")
+		#print(self.spellButtons.checkedId(),"is checkedID")
 		if self.spellButtons.checkedId() != -1:
 			self.checkedId = (self.spellButtons.checkedId() * -1) -1
 			for each in self.buttonidmapping.keys():
 				if self.buttonidmapping[each] == self.checkedId:
 					self.cantrip = each
-					print ("Cantrip set to ",each)
+					#print ("Cantrip set to ",each)
 					break
-				else:
-					print ("self.spellButtons.checkedId() is currently",self.checkedId,"and self.buttonidmapping[each] is",self.buttonidmapping[each], "and each is", each)
-		else:
-			print("No button selected")
-
-
+				
 	def closeEvent(self,event):
-		
-		self.pickLang = PickLanguage(self,self.race,self.cantrip)
-		self.pickLang.show()
-		event.accept()
+		if self.spellButtons.checkedId() != -1:
+			self.pickLang = PickLanguage(self,self.race,self.cantrip)
+			self.pickLang.show()
+			event.accept()
+		else:
+			print("No cantrip selected")
+
 			
 	
 
@@ -372,21 +377,15 @@ class PickLanguage(QWidget):
 		self.vertbox.addWidget(self.langbutton20)
 		self.idcounter +=1
 
-		self.bottombuttonbox = QHBoxLayout()
-		self.vertbox.addLayout(self.bottombuttonbox)
 
-		self.applyButton = QPushButton("Apply")
-		self.applyButton.setToolTip("This will confirm your choice of language")
-		self.bottombuttonbox.addWidget(self.applyButton)
-		self.applyButton.clicked.connect(self.done)
+
+
 
 		self.doneButton = QPushButton("Done")
-		self.doneButton.setToolTip("Exit this window")
-		self.bottombuttonbox.addWidget(self.doneButton)
+		self.doneButton.setToolTip("Confirm your choice and close this window")
 		self.doneButton.clicked.connect(self.close)
 
-	def done(self):
-		self.parent.parent.parent_window.tab_window.main_window.race = elf.Elf("High Elf",self.cantrip, self.getLanguage())
+		self.vertbox.addWidget(self.doneButton)
 
 
 	def getLanguage(self):
@@ -397,14 +396,15 @@ class PickLanguage(QWidget):
 
 	def closeEvent(self,event):
 		if self.languageButtonGroup.checkedId() != -1:
-			print("Closing Language window and printing")
+
+			self.parent.parent.parent_window.tab_window.main_window.race = elf.Elf("High Elf",self.cantrip, self.getLanguage())
+			print("Character set to")
 			print(self.parent.parent.parent_window.tab_window.main_window.race)
-			print("Just printed from Language window")
-			event.accept()
 
 		else:
 			print ("No language chosen so no cantrip chosen so no subrace chosen")
-			event.accept()
+
+		event.accept()
 
 
 

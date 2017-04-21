@@ -13,7 +13,6 @@ import sys
 class DND_CC_Window(QMainWindow):
 	def __init__(self):
 		QMainWindow.__init__(self)
-		self.setGeometry(0, 0, 400, 400)
 		self.setWindowTitle("Dungeons and Dragons Character Creator")
 		#self.baseFields = {}
 		self.setup()
@@ -27,7 +26,7 @@ class DND_CC_Window(QMainWindow):
 
 class TabView(QTabWidget):
 	def __init__(self, parent):
-		QTabWidget.__init__(self)
+		QTabWidget.__init__(self,parent)
 		self.main_window = parent
 		self.setup()
 
@@ -58,12 +57,12 @@ class WelcomeWindow(QWidget):
 		self.label.setPixmap(self.pixmap)
 		self.picbox.addWidget(self.label)
 
-		self.label2 = QLabel(self)
+		'''self.label2 = QLabel(self)
 		self.pixmap2 = QPixmap('welcometitle.jpg')
 		self.pixmap2 = self.pixmap2.scaledToWidth(self.width())
 		self.label2.setPixmap(self.pixmap2)
 		self.picbox.addWidget(self.label2)
-		self.picbox.setAlignment(self.label2, Qt.AlignCenter)
+		self.picbox.setAlignment(self.label2, Qt.AlignCenter)'''
 
 
 		#self.buttonbox.addWidget(self.start_button)
