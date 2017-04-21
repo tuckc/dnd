@@ -19,4 +19,4 @@ class Halfelf(Race):
         self.features = ['Darkvision', 'Fey Ancestry']
         self.proficiencies = proficiencies
     def __str__(self):
-        return super.__str__(self)
+        return super(Halfelf, self).__str__()

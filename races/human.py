@@ -11,5 +11,5 @@ class Human(Race):
         self.charisma = 1
         self.languages = ['Common', language]
     def __str__(self):
-        return super.__str__(self)
+        return super(Human,self).__str__()
         

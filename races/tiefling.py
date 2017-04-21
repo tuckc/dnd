@@ -9,4 +9,4 @@ class Tiefling(Race):
         self.features = ['Darkvision', 'Hellish Resistance', 'Infernal Legacy']
         self.cantrips = ['Thaumaturgy']
     def __str__(self):
-        return super.__str__(self)
+        return super(Tiefling,self).__str__()

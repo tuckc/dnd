@@ -9,5 +9,5 @@ class Halforc(Race):
         self.features = ['Darkvision', 'Relentless Endurance', 'Savage Attacks']
         self.proficiencies = ['Intimidation']
     def __str__(self):
-        return super.__str__(self)
+        return super(Halforc,self).__str__()
         

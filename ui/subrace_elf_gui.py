@@ -117,7 +117,9 @@ class SubraceElf(QWidget):
 			self.pCan = PickCantrip(self,"High Elf")
 			self.pCan.show()
 		else:
+			print("Closing subrace elf window and printing")
 			print(self.parent_window.tab_window.main_window.race)
+			print("Just printed from subrace elf window")
 
 		event.accept()
 
@@ -186,6 +188,7 @@ class PickCantrip(QWidget):
 
 
 	def closeEvent(self,event):
+		
 		self.pickLang = PickLanguage(self,self.race,self.cantrip)
 		self.pickLang.show()
 		event.accept()
@@ -386,8 +389,11 @@ class PickLanguage(QWidget):
 
 	def closeEvent(self,event):
 		if self.languageButtonGroup.checkedId() != -1:
+			print("Closing Language window and printing")
 			print(self.parent.parent.parent_window.tab_window.main_window.race)
+			print("Just printed from Language window")
 			event.accept()
+
 		else:
 			print ("No language chosen so no cantrip chosen so no subrace chosen")
 			event.accept()

@@ -21,5 +21,5 @@ class Halfling(Race):
         self.constitution = 1
         self.features.append('Stout Resillience')
     def __str__(self):
-        return super.__str__(self)
+        return super(Halfling,self).__str__()
         

@@ -12,4 +12,4 @@ class Dragonborn(Race):
             'Damage Resistance(' + ancestry + ')'
         ]
     def __str__(self):
-        return super.__str__(self)
+        return super(Dragonborn, self).__str__()

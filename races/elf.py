@@ -38,4 +38,4 @@ class Elf(Race):
         self.features[self.features.index('Darkvision')] = 'Superior Darkvision'
 
     def __str__(self):
-        return super.__str__(self)
+        return super(Elf, self).__str__()

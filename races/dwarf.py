@@ -33,4 +33,4 @@ class Dwarf(Race):
         self.other.extend(['Light Armor', 'Medium Armor'])
 
     def __str__(self):
-        return super.__str__(self)
+        return super(Dwarf, self).__str__()
