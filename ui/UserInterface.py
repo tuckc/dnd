@@ -13,7 +13,7 @@ import sys
 class DND_CC_Window(QMainWindow):
 	def __init__(self):
 		QMainWindow.__init__(self)
-		self.setGeometry(200, 200, 700, 700)
+		self.setGeometry(200, 200, 500, 500)
 		self.setWindowTitle("Dungeons and Dragons Character Creator")
 		#self.baseFields = {}
 		self.setup()
@@ -87,7 +87,6 @@ class StartButton(QPushButton):
 		self.clicked.connect(self.handleStart)
 
 	def handleStart(self):
-	
 		self.parent.tab_window.setTabEnabled(1,True)
 
 

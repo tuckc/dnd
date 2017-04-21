@@ -4,9 +4,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import sys
 
-class DND_CC_Window(QtWidgets.QWidget):
-	def __init__(self):
+class SubraceHalfling(QtWidgets.QWidget):
+	def __init__(self, parent):
 		QtWidgets.QWidget.__init__(self)
+		self.parent = parent
 		self.setup()
 
 	def setup(self):
@@ -47,7 +48,6 @@ class DND_CC_Window(QtWidgets.QWidget):
 		self.show()
 
 
-		self.resize(800, 800)
 	
 
 if __name__ == "__main__":
@@ -55,5 +55,5 @@ if __name__ == "__main__":
 	Code from slide 15 of lecture 17
 	'''
 	app = QtWidgets.QApplication(sys.argv)
-	main_window = DND_CC_Window()
+	main_window = SubraceHalfling()
 	app.exec_()

@@ -17,7 +17,7 @@ class SubraceElf(QWidget):
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(150, 150, 600, 600)
+		self.setGeometry(150, 150, 500, 500)
 		self.setWindowTitle("Dungeons and Dragons Character Creator: Elf Subrace")
 				
 		self.elfTitle=QLabel()
@@ -36,8 +36,8 @@ class SubraceElf(QWidget):
 		self.darkButton=QRadioButton("Dark Elf")
 		self.darkButton.setToolTip("Descended from an earlier subrace of dark-skinned elves, the drow were banished from the surface world for following the goddess Lolth down the path to evil and corruption.<br> Now they have built their own civilization in the depths of the Underdark, patterned after the Way of Lolth<br>------------Stats------------<br>All Elf Base stats<br>Charisma +1<br>Skills:Superior Darkvision, Sunlight Sensitivity, Drow Magic, Drow Weapon Training")
 		
-			
-
+		#issue with accepting on done click
+		
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
 		self.buttonbox = QHBoxLayout()
@@ -115,7 +115,7 @@ class PickCantrip(QWidget):
 
 
 	def setup(self):
-		self.setGeometry(100,100,500,500)
+		self.setGeometry(100,100,400,400)
 		self.vertbox = QVBoxLayout()
 		self.label = QLabel()
 		self.label.setText("Choose your Cantrip")

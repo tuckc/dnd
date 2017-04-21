@@ -89,7 +89,6 @@ class SubraceDwarf(QWidget):
 
 
 
-		self.resize(800, 800)
 
 	def closeEvent(self,event):
 		if self.mountainButton.isChecked():

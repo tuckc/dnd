@@ -89,7 +89,6 @@ class SubraceGnome(QWidget):
 		self.show()
 
 
-		self.resize(800, 800)
 
 	def closeEvent(self,event):
 		if self.forestButton.isChecked():
