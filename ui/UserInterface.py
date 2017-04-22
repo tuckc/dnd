@@ -22,7 +22,7 @@ class DND_CC_Window(QMainWindow):
 		self.Menu = self.menuBar()
 		self.quitmenu = self.Menu.addMenu("Quit")
 		self.exitButton = QAction(QIcon('exit24.png'),'Exit', self)
-		self.exitButton =setShortcut('Ctrl+Q')
+		self.exitButton.setShortcut('Ctrl+Q')
 		self.exitButton.setStatusTip("Exit Application")
 		self.exitButton.triggered.connect(self.close)
 		self.quitmenu.addAction(self.exitButton)
