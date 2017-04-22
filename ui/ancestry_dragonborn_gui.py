@@ -109,8 +109,13 @@ class AncestryDragonborn(QWidget):
 		self.buttonbox.addWidget(self.silverButton)
 		self.buttonbox.addWidget(self.whiteButton)
 
+		self.doneButton = QPushButton("Done")
+		self.doneButton.setToolTip("Confirm your choice and return to race screen")
+		self.doneButton.clicked.connect(self.close)
+		
 
 		self.vbox.addLayout(self.buttonbox)
+		self.vbox.addWidget(self.doneButton)
 				
 		self.setLayout(self.vbox)
 		#self.vbox.addLayout(self.picbox)
@@ -143,6 +148,8 @@ class AncestryDragonborn(QWidget):
 		else:
 			print("No Ancestry selected")
 
+		print("Character is now")
+		print(self.parent_window.tab_window.main_window.race)
 		event.accept()
 
 if __name__ == "__main__":

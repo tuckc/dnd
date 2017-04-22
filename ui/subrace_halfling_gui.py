@@ -17,7 +17,7 @@ class SubraceHalfling(QWidget):
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(200, 200, 700, 700)
+		self.setGeometry(50, 50, 500, 500)
 		self.setWindowTitle("Dungeons and Dragons Character Creator: Halfling Subrace")
 		
 		self.halflingTitle=QLabel()
@@ -34,39 +34,29 @@ class SubraceHalfling(QWidget):
 		
 		
 		
-		
-		#self.addButton(self.dwarfButton)
-		#self.addButton(self.hillButton)
-		#self.addButton(self.mountainButton)
+	
 
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
 		self.buttonbox = QHBoxLayout()
 
-		#self.picbox = QHBoxLayout()
 		self.buttongroup = QButtonGroup()
-		#self.buttongroup.addButton(self.dwarfButton)
 		self.buttongroup.addButton(self.lightfootButton)
 		self.buttongroup.addButton(self.stoutButton)
 		
 
-		#self.vbox.addWidget(self.buttongroup)
 
-		#self.dwarflabel = QLabel(self)
 		self.pic1label = QLabel(self)
 		self.pic1label.resize(self.size()*.25)
 		self.pic2label = QLabel(self)
 		self.pic2label.resize(self.size()*.25)
 		
-		#self.dwarfpixmap = QPixmap('dwarf.jpg')
 		self.db1pixmap = QPixmap('lightfoot.jpg').scaled(self.pic1label.size())
 		self.db2pixmap = QPixmap('stout.jpg').scaled(self.pic2label.size())
 
-		#self.dwarflabel.setPixmap(self.dwarfpixmap)
 		self.pic1label.setPixmap(self.db1pixmap)	#hilllabel= pic1
 		self.pic2label.setPixmap(self.db2pixmap)#mountainlable=pic2
 
-		#self.vbox.addWidget(self.dwarflabel)
 		self.vbox.addWidget(self.halflingTitle)
 		self.vbox.addWidget(self.halflingDetails)
 		
@@ -80,27 +70,32 @@ class SubraceHalfling(QWidget):
 		self.buttonbox.addWidget(self.lightfootButton)
 		self.buttonbox.addWidget(self.stoutButton)
 		
+		self.doneButton = QPushButton("Done")
+		self.doneButton.setToolTip("Confirm your subrace selection and close this window")
+		self.doneButton.clicked.connect(self.close)
 
 
 		self.vbox.addLayout(self.buttonbox)
+		self.vbox.addWidget(self.doneButton)
 				
 		self.setLayout(self.vbox)
-		#self.vbox.addLayout(self.picbox)
-		#self.vbox.addLayout(self.buttonbox)
+
 		self.show()
 
 
-		self.resize(800, 800)
 
 	def closeEvent(self,event):
 		if self.lightfootButton.isChecked():
 			self.parent_window.tab_window.main_window.race = halfling.Halfling("Lightfoot Halfling")
+			print("Character now ")
+			print(self.parent_window.tab_window.main_window.race)
 		elif self.stoutButton.isChecked():
 			self.parent_window.tab_window.main_window.race = halfling.Halfling("Stout Halfling")
+			print("Character now ")
+			print(self.parent_window.tab_window.main_window.race)
 		
 		else:
 			print("No Subrace selected")
-			event.accept()
 
 		event.accept()
 

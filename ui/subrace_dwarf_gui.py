@@ -121,7 +121,7 @@ class PickTool(QWidget):
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(50,50,400,400)
+		self.setGeometry(100,100,300,300)
 		self.vertbox = QVBoxLayout()
 		self.label = QLabel()
 		self.label.resize(self.size()*.25)

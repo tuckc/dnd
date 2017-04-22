@@ -69,12 +69,12 @@ class RaceWindow(QWidget):
 
 
 		elif pickedRace == 'halforc':
-			self.race=halforc.Halforc()
+			self.tab_window.main_window.race=halforc.Halforc()
 			#print "halforc charisma->",self.tab_window.main_window.race.charisma
 		
 		
 		elif pickedRace == 'tiefling':
-			self.race=tiefling.Tiefling()
+			self.tab_window.main_window.race=tiefling.Tiefling()
 			#print "tiefling charisma->",self.tab_window.main_window.race.charisma
 		
 
@@ -128,7 +128,7 @@ class RaceWindow(QWidget):
 		self.pixmap = QPixmap('race.jpg')
 		self.label.setPixmap(self.pixmap)
 		self.picbox.addWidget(self.label)
-		self.pixmap.scaled(self.width(),self.height())
+		self.pixmap.scaled(self.width()-100,self.height())
 		
 		self.buttonbox.addWidget(self.gnomeButton)		
 		self.buttonbox.addWidget(self.halflingButton)		

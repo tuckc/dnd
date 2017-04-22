@@ -14,12 +14,18 @@ class DND_CC_Window(QMainWindow):
 	def __init__(self):
 		QMainWindow.__init__(self)
 		self.setWindowTitle("Dungeons and Dragons Character Creator")
-		#self.baseFields = {}
 		self.setup()
 
 	def setup(self):
 		self.tab_widget = TabView(self)
 		self.setCentralWidget(self.tab_widget)
+		self.Menu = self.menuBar()
+		self.quitmenu = self.Menu.addMenu("Quit")
+		self.exitButton = QAction(QIcon('exit24.png'),'Exit', self)
+		self.exitButton =setShortcut('Ctrl+Q')
+		self.exitButton.setStatusTip("Exit Application")
+		self.exitButton.triggered.connect(self.close)
+		self.quitmenu.addAction(self.exitButton)
 		self.show()
 
 
@@ -33,13 +39,13 @@ class TabView(QTabWidget):
 	def setup(self):
 		self.addTab(WelcomeWindow(self), 'Welcome!')
 		self.addTab(RaceWindow(self), 'Race')
-		self.setTabEnabled(2, False)
+		#self.setTabEnabled(2, False)
 		self.addTab(StatsWindow(self), 'Stats')
-		self.setTabEnabled(3, False)
+		#self.setTabEnabled(3, False)
 		self.addTab(ClassWindow(self), 'Class')
-		self.setTabEnabled(4, False)
+		#self.setTabEnabled(4, False)
 		self.addTab(BackgroundWindow(self), 'Background')
-		self.setTabEnabled(5, False)
+		#self.setTabEnabled(5, False)
 		
 
 class WelcomeWindow(QWidget):
