@@ -14,6 +14,8 @@ class SubraceHalfling(QWidget):
 	def __init__(self, parent):
 		QWidget.__init__(self)
 		self.parent_window = parent
+		self.label = QLabel()
+		self.label.setText("Choose your subrace here!")
 		self.setup()
 
 	def setup(self):
@@ -57,6 +59,8 @@ class SubraceHalfling(QWidget):
 		self.pic1label.setPixmap(self.db1pixmap)	#hilllabel= pic1
 		self.pic2label.setPixmap(self.db2pixmap)#mountainlable=pic2
 
+
+		self.vbox.addWidget(self.label)
 		self.vbox.addWidget(self.halflingTitle)
 		self.vbox.addWidget(self.halflingDetails)
 		
@@ -87,17 +91,23 @@ class SubraceHalfling(QWidget):
 	def closeEvent(self,event):
 		if self.lightfootButton.isChecked():
 			self.parent_window.tab_window.main_window.race = halfling.Halfling("Lightfoot Halfling")
+			self.parent_window.label.setText("Lightfoot Halfling")
 			print("Character now ")
 			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.stoutButton.isChecked():
 			self.parent_window.tab_window.main_window.race = halfling.Halfling("Stout Halfling")
+			self.parent_window.label.setText("Stout Halfling")
 			print("Character now ")
 			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		
 		else:
-			print("No Subrace selected")
+			self.label.setText("YOU MUST SELECT A SUBRACE TO CONTINUE!")
+			event.ignore()
 
-		event.accept()
+		
+
 
 if __name__ == "__main__":
 

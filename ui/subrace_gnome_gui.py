@@ -19,7 +19,9 @@ class SubraceGnome(QWidget):
 	def setup(self):
 		self.setGeometry(50, 50, 500, 500)
 		self.setWindowTitle("Dungeons and Dragons Character Creator: Gnome Subrace")
-		
+		self.label = QLabel()
+		self.label.setText("Choose your subrace here!")
+
 		self.gnomeTitle=QLabel()
 		self.gnomeTitle.setText("Gnome")
 		self.gnomeDetails =QTextEdit("Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.<br>Gnomes average slightly over 3 feet tall and weigh 40 to 45 pounds.<br>------------Stats------------<br>Intelligence +2<br>Speed:25 Feet<br>Skills:Darkvision, Gnome Cunning<br>Languages: Common and Gnomish<br>Subrace: Yes")
@@ -55,6 +57,7 @@ class SubraceGnome(QWidget):
 		self.pic1label.setPixmap(self.db1pixmap)	#hilllabel= pic1
 		self.pic2label.setPixmap(self.db2pixmap)#mountainlable=pic2
 
+		self.vbox.addWidget(self.label)
 		self.vbox.addWidget(self.gnomeTitle)
 		self.vbox.addWidget(self.gnomeDetails)
 		
@@ -86,14 +89,26 @@ class SubraceGnome(QWidget):
 	def closeEvent(self,event):
 		if self.forestButton.isChecked():
 			self.parent_window.tab_window.main_window.race = gnome.Gnome("Forest Gnome")
+			self.parent_window.label.setText("Forest Gnome")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.rockButton.isChecked():
 			self.parent_window.tab_window.main_window.race = gnome.Gnome("Rock Gnome")
-		
-		else:
-			print("No Subrace selected")
+			self.parent_window.label.setText("Rock Gnome")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
 			event.accept()
+		else:
+			self.label.setText("YOU MUST SELECT A SUBRACE TO CONTINUE!")
+			event.ignore()
+		
+			
 
-		event.accept()
+
+
+	
+
 
 if __name__ == "__main__":
 

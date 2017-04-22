@@ -27,7 +27,9 @@ import subrace_halfling_gui
 class RaceWindow(QWidget):
 	def __init__(self, parent):
 		QWidget.__init__(self)
-		self.tab_window = parent		
+		self.tab_window = parent
+		self.title = QLabel("Your current race is: ")	
+		self.label = QLabel()	
 		self.setup()
 		
 	def handler(self,pickedRace,first=None,second=None,third=None):
@@ -45,37 +47,45 @@ class RaceWindow(QWidget):
 		elif pickedRace == 'dragonborn':
 			self.race=ancestry_dragonborn_gui.AncestryDragonborn(self)
 			#print "dragonborn charisma->",self.tab_window.main_window.race.features.charisma
-		
+			#ANCESTRY PAGE FINISHED
+
 		elif pickedRace == 'halfling':
 			self.race=subrace_halfling_gui.SubraceHalfling(self)
 			#print "halfling charisma->",self.tab_window.main_window.race.charisma
+			#SUBRACE PAGE FINISHED
 
 		elif pickedRace == 'gnome':
 			self.race=subrace_gnome_gui.SubraceGnome(self)
 			#print "gnome charisma->",self.tab_window.main_window.race.charisma
+			#SUBRACE PAGES FINISHED
 
-
+		elif pickedRace == 'halforc':
+			self.tab_window.main_window.race=halforc.Halforc()
+			self.label.setText("Half-Orc")
+			#print "halforc charisma->",self.tab_window.main_window.race.charisma
+			#PAG FINISHED
+		
+		elif pickedRace == 'tiefling':
+			self.tab_window.main_window.race=tiefling.Tiefling()
+			self.label.setText("Tiefling")
+			#print "tiefling charisma->",self.tab_window.main_window.race.charisma
+			#PAGES FINISHED
 
 
 		elif pickedRace == 'human':
 			self.race=human.Human()
+			self.label.setText("Human")
 			#print "human charisma->",self.tab_window.main_window.race.charisma
 
 
 
 		elif pickedRace == 'halfelf':
 			self.race=halfelf.Halfelf()
+			self.label.setText("Half-Elf")
 			#print "halfelf charisma->",self.tab_window.main_window.race.charisma
 
 
-		elif pickedRace == 'halforc':
-			self.tab_window.main_window.race=halforc.Halforc()
-			#print "halforc charisma->",self.tab_window.main_window.race.charisma
 		
-		
-		elif pickedRace == 'tiefling':
-			self.tab_window.main_window.race=tiefling.Tiefling()
-			#print "tiefling charisma->",self.tab_window.main_window.race.charisma
 		
 
 	def setup(self):	
@@ -123,11 +133,15 @@ class RaceWindow(QWidget):
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
 		self.buttonbox = QHBoxLayout()
+		self.titlebox = QHBoxLayout()
+		self.titlebox.addWidget(self.title)
+		self.titlebox.addWidget(self.label)
 
-		self.label = QLabel(self)
+		self.vbox.addLayout(self.titlebox)
+		self.racepic = QLabel(self)
 		self.pixmap = QPixmap('race.jpg')
-		self.label.setPixmap(self.pixmap)
-		self.picbox.addWidget(self.label)
+		self.racepic.setPixmap(self.pixmap)
+		self.picbox.addWidget(self.racepic)
 		self.pixmap.scaled(self.width()-100,self.height())
 		
 		self.buttonbox.addWidget(self.gnomeButton)		

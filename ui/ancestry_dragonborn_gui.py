@@ -14,10 +14,12 @@ class AncestryDragonborn(QWidget):
 	def __init__(self, parent):
 		QWidget.__init__(self)
 		self.parent_window = parent
+		self.label = QLabel()
+		self.label.setText("Choose your ancestry here!")
 		self.setup()
 
 	def setup(self):
-		self.setGeometry(200, 200, 700, 700)
+		self.setGeometry(50, 50, 500, 500)
 		self.setWindowTitle("Dungeons and Dragons Character Creator: Dragonborn Ancestry")
 		
 		self.dragonbornTitle=QLabel()
@@ -49,17 +51,13 @@ class AncestryDragonborn(QWidget):
 		
 		
 		
-		#self.addButton(self.dwarfButton)
-		#self.addButton(self.hillButton)
-		#self.addButton(self.mountainButton)
 
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
 		self.buttonbox = QHBoxLayout()
 
-		#self.picbox = QHBoxLayout()
+
 		self.buttongroup = QButtonGroup()
-		#self.buttongroup.addButton(self.dwarfButton)
 		self.buttongroup.addButton(self.blackButton)
 		self.buttongroup.addButton(self.blueButton)
 		self.buttongroup.addButton(self.brassButton)
@@ -71,29 +69,26 @@ class AncestryDragonborn(QWidget):
 		self.buttongroup.addButton(self.silverButton)
 		self.buttongroup.addButton(self.whiteButton)
 
-		#self.vbox.addWidget(self.buttongroup)
 
-		#self.dwarflabel = QLabel(self)
 		self.pic1label = QLabel(self)
 		self.pic1label.resize(self.size()*.25)
 		self.pic2label = QLabel(self)
 		self.pic2label.resize(self.size()*.25)
 		
-		#self.dwarfpixmap = QPixmap('dwarf.jpg')
 		self.db1pixmap = QPixmap('dragonborn1.jpg').scaled(self.pic1label.size())
 		self.db2pixmap = QPixmap('dragonborn2.jpg').scaled(self.pic2label.size())
 
-		#self.dwarflabel.setPixmap(self.dwarfpixmap)
 		self.pic1label.setPixmap(self.db1pixmap)	#hilllabel= pic1
 		self.pic2label.setPixmap(self.db2pixmap)#mountainlable=pic2
 
-		#self.vbox.addWidget(self.dwarflabel)
+		self.vbox.addWidget(self.label)
 		self.vbox.addWidget(self.dragonbornTitle)
 		self.vbox.addWidget(self.dragonbornDetails)
 		
 
 		self.picbox.addWidget(self.pic1label)
 		self.picbox.addWidget(self.pic2label)
+
 
 		self.vbox.addLayout(self.picbox)
 		
@@ -118,8 +113,7 @@ class AncestryDragonborn(QWidget):
 		self.vbox.addWidget(self.doneButton)
 				
 		self.setLayout(self.vbox)
-		#self.vbox.addLayout(self.picbox)
-		#self.vbox.addLayout(self.buttonbox)
+
 		self.show()
 
 
@@ -127,30 +121,69 @@ class AncestryDragonborn(QWidget):
 	def closeEvent(self,event):
 		if self.blackButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Black")
+			self.parent_window.label.setText("Black Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.blueButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Blue")
+			self.parent_window.label.setText("Blue Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.brassButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Brass")
+			self.parent_window.label.setText("Brass Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.bronzeButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Bronze")
+			self.parent_window.label.setText("Bronze Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.copperButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Copper")
+			self.parent_window.label.setText("Copper Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.goldButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Gold")
+			self.parent_window.label.setText("Gold Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.greenButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Green")
+			self.parent_window.label.setText("Green Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.redButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Red")
+			self.parent_window.label.setText("Red Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.silverButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("Silver")
+			self.parent_window.label.setText("Silver Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		elif self.whiteButton.isChecked():
 			self.parent_window.tab_window.main_window.race = dragonborn.Dragonborn("White")
+			self.parent_window.label.setText("White Dragonborn")
+			print("Character is now")
+			print(self.parent_window.tab_window.main_window.race)
+			event.accept()
 		else:
-			print("No Ancestry selected")
+			self.label.setText("YOU MUST SELECT AN ANCESTRY TO CONTINUE!")
+			event.ignore()
 
-		print("Character is now")
-		print(self.parent_window.tab_window.main_window.race)
-		event.accept()
+
 
 if __name__ == "__main__":
 
