@@ -7,6 +7,7 @@ sys.path.append(sys.path[0][:-2]+"stats")
 sys.path.append(sys.path[0][:-2])
 import stats
 import class_gui
+import stats_gui
 from random import *
 
 class StatsWindow(QWidget):
@@ -149,7 +150,11 @@ class StatsWindow(QWidget):
 			self.tab_window.setCurrentIndex(3)
 
 	def restart(self):
-		self.closeEvent(self.close)
+		self.tab_window.removeTab(2)
+		self.tab_window.StatsWindowObject = self.tab_window.main_window.returnStatsWindow(self.tab_window)
+		self.tab_window.insertTab(2,self.tab_window.StatsWindowObject, "&Stats")
+		self.tab_window.setCurrentIndex(2)
+		self.tab_window.main_window.statspagecount = 1
 		
 
 

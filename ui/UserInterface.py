@@ -32,6 +32,9 @@ class DND_CC_Window(QMainWindow):
 		self.statspagecount = 0
 		self.show()
 
+	def returnStatsWindow(self,tab_window):
+		return StatsWindow(tab_window)
+
 
 
 class TabView(QTabWidget):
