@@ -55,10 +55,19 @@ class StatsWindow(QWidget):
 		self.done_label.setText("Stats Added")
 		self.vbox.addWidget(self.done_label)
 
+		self.buttonbox = QHBoxLayout()
+
 		self.confirmButton = QPushButton("Confirm")
 		self.confirmButton.clicked.connect(self.confirm)
 
-		self.vbox.addWidget(self.confirmButton)
+		self.restartButton = QPushButton("Restart")
+		self.restartButton.clicked.connect(self.restart)
+
+		
+		self.buttonbox.addWidget(self.confirmButton)
+		self.buttonbox.addWidget(self.restartButton)
+
+		self.vbox.addLayout(self.buttonbox)
 
 		self.show()
 
@@ -79,61 +88,69 @@ class StatsWindow(QWidget):
 
 
 	def check_stats(self):
-		if int(self.strengthInput.text()) in self.totals:
-			self.strength = int(self.strengthInput.text())
-			self.statsLabel.setText("Stats")
-		else:
-			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
-			self.errnum += 1
-			return False
+		try:
+			if int(self.strengthInput.text()) in self.totals:
+				self.strength = int(self.strengthInput.text())
+				self.statsLabel.setText("Stats")
+			else:
+				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				return False
 
-		if int(self.dexterityInput.text()) in self.totals:
-			self.dexterity = int(self.dexterityInput.text())
-			self.statsLabel.setText("Stats")
-		else:
-			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
-			self.errnum += 1
-			return False
+			if int(self.dexterityInput.text()) in self.totals:
+				self.dexterity = int(self.dexterityInput.text())
+				self.statsLabel.setText("Stats")
+			else:
+				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				return False	
 
-		if int(self.constitutionInput.text()) in self.totals:
-			self.constitution = int(self.constitutionInput.text())
-			self.statsLabel.setText("Stats")
-		else:
-			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
-			self.errnum += 1
-			return False
+			if int(self.constitutionInput.text()) in self.totals:
+				self.constitution = int(self.constitutionInput.text())
+				self.statsLabel.setText("Stats")
+			else:
+				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				return False
 
-		if int(self.intelligenceInput.text()) in self.totals:
-			self.intelligence = int(self.intelligenceInput.text())
-			self.statsLabel.setText("Stats")
-		else:
-			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
-			self.errnum += 1
-			return False
+			if int(self.intelligenceInput.text()) in self.totals:
+				self.intelligence = int(self.intelligenceInput.text())
+				self.statsLabel.setText("Stats")
+			else:
+				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				return False
 
-		if int(self.wisdomInput.text()) in self.totals:
-			self.wisdom = int(self.wisdomInput.text())
-			self.statsLabel.setText("Stats")
-		else:
-			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
-			self.errnum += 1
-			return False
+			if int(self.wisdomInput.text()) in self.totals:
+				self.wisdom = int(self.wisdomInput.text())
+				self.statsLabel.setText("Stats")
+			else:
+				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				return False
 
-		if int(self.charismaInput.text()) in self.totals:
-			self.charisma = int(self.charismaInput.text())
-			self.statsLabel.setText("Stats")
-		else:
-			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
-			self.errnum += 1
+			if int(self.charismaInput.text()) in self.totals:
+				self.charisma = int(self.charismaInput.text())
+				self.statsLabel.setText("Stats")
+			else:
+				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				return False
+			return True
+		except ValueError:
+			self.statsLabel.setText("YOU MUST INPUT INTEGER VALUES!")
 			return False
+		
 
-		return True
+		
 
 
 	def confirm(self):
-		self.tab_window.ClassWindowObject = class_gui.ClassWindow(self)
-		self.tab_window.insertTab(3, self.tab_window.ClassWindowObject, "&Classes")	
-		self.tab_window.setCurrentIndex(3)
+		if self.tab_window.main_window.classpagecount < 1:
+			self.tab_window.ClassWindowObject = class_gui.ClassWindow(self.tab_window)
+			self.tab_window.addTab(self.tab_window.ClassWindowObject, "&Classes")	
+			self.tab_window.setCurrentIndex(3)
+			self.tab_window.main_window.classpagecount = 1
+		else:
+			self.tab_window.setCurrentIndex(3)
+
+	def restart(self):
+		self.closeEvent(self.close)
+		
 
 
 	def assign_stats(self):

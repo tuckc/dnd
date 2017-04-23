@@ -28,6 +28,8 @@ class DND_CC_Window(QMainWindow):
 		self.exitButton.triggered.connect(self.close)
 		self.quitmenu.addAction(self.exitButton)
 		self.racepagecount = 0
+		self.classpagecount = 0
+		self.statspagecount = 0
 		self.show()
 
 
@@ -40,7 +42,7 @@ class TabView(QTabWidget):
 
 	def setup(self):
 		self.addTab(WelcomeWindow(self), '&Welcome!')
-		self.addTab(RaceWindow(self), '&Race')
+
 		
 
 		
@@ -60,12 +62,7 @@ class WelcomeWindow(QWidget):
 		self.label.setPixmap(self.pixmap)
 		self.picbox.addWidget(self.label)
 
-		'''self.label2 = QLabel(self)
-		self.pixmap2 = QPixmap('welcometitle.jpg')
-		self.pixmap2 = self.pixmap2.scaledToWidth(self.width())
-		self.label2.setPixmap(self.pixmap2)
-		self.picbox.addWidget(self.label2)
-		self.picbox.setAlignment(self.label2, Qt.AlignCenter)'''
+
 
 		self.start_button.clicked.connect(self.nextpage)
 
@@ -79,7 +76,16 @@ class WelcomeWindow(QWidget):
 
 
 	def nextpage(self):
-		self.tab_window.setCurrentIndex(1)
+		if self.tab_window.main_window.racepagecount < 1:
+			self.tab_window.RaceWindowObject = RaceWindow(self.tab_window)
+			self.tab_window.addTab(self.tab_window.RaceWindowObject, "&Race")
+			self.tab_window.setCurrentIndex(1)
+			self.tab_window.main_window.racepagecount = 1
+		else:
+			self.tab_window.setCurrentIndex(1)
+
+
+		
 
 
 

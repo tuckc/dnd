@@ -182,12 +182,12 @@ class RaceWindow(QWidget):
 
 	def confirm(self):
 		if self.tab_window.main_window.raceset:
-			if self.tab_window.main_window.racepagecount < 1:
+			if self.tab_window.main_window.statspagecount < 1:
 				self.tab_window.RaceWindowObject = stats_gui.StatsWindow(self.tab_window)
-				self.tab_window.insertTab(2, self.tab_window.RaceWindowObject, "&Stats")
+				self.tab_window.addTab(self.tab_window.RaceWindowObject, "&Stats")
 				self.tab_window.setCurrentIndex(2)
 				self.window_title.setText("Race confirmed")
-				self.tab_window.main_window.racepagecount = 1
+				self.tab_window.main_window.statspagecount = 1
 			else:
 				self.tab_window.setCurrentIndex(2)
 		else:
