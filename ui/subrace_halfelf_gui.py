@@ -42,7 +42,6 @@ class SubraceHalfelf(QWidget):
 		self.wisdomButton=QRadioButton("Wisdom")
 		self.wisdomButton.setToolTip("Wisdom +1")		
 		
-		#issue with accepting on done click
 		
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
@@ -131,6 +130,9 @@ class SubraceHalfelf(QWidget):
 			self.pCan = PickLanguage(self,"Wisdom")
 			self.pCan.show()
 			event.accept()
+		else:
+			self.label.setText("YOU MUST SELECT AN ABILITY TO CONTINUE!")
+			event.ignore()
 			
 
 class PickLanguage(QWidget):
@@ -297,6 +299,7 @@ class PickLanguage(QWidget):
 		self.buttonidmapping["Undercommon"] = self.idcounter
 		self.vertbox.addWidget(self.langbutton20)
 		self.idcounter +=1
+
 
 
 

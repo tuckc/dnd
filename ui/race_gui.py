@@ -24,6 +24,7 @@ import subrace_gnome_gui
 import subrace_elf_gui
 import subrace_halfling_gui
 import language_human_gui
+import subrace_halfelf_gui
 
 class RaceWindow(QWidget):
 	def __init__(self, parent):
@@ -74,15 +75,15 @@ class RaceWindow(QWidget):
 
 
 		elif pickedRace == 'human':
-			self.race=language_human_gui.LanuageHuman(self)
-			self.label.setText("Human")
+			self.race=language_human_gui.LanguageHuman(self)
+			#self.label.setText("Human")
 			#print "human charisma->",self.tab_window.main_window.race.charisma
 
 
 
 		elif pickedRace == 'halfelf':
-			self.race=halfelf.Halfelf()
-			self.label.setText("Half-Elf")
+			self.race=subrace_halfelf_gui.SubraceHalfelf(self)
+			#self.label.setText("Half-Elf")
 			#print "halfelf charisma->",self.tab_window.main_window.race.charisma
 
 
