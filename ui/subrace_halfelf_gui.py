@@ -95,7 +95,7 @@ class SubraceHalfelf(QWidget):
 
 
 
-		self.doneButton = QPushButton("Done/Next")
+		self.doneButton = QPushButton("Next")
 		self.doneButton.setToolTip("Exit this window and choose your language")
 		self.bottombuttonbox.addWidget(self.doneButton)
 		self.doneButton.clicked.connect(self.close)

@@ -31,7 +31,7 @@ class StatsWindow(QWidget):
 			num1 = max(self.rolls)
 			self.rolls.remove(num1)
 			num2 = max(self.rolls)
-			self.totals.append(num1+num2)
+			self.totals.append([(num1+num2), False])
 			i = 0
 			self.rolls = []
 			j = j+1
@@ -39,14 +39,15 @@ class StatsWindow(QWidget):
 
 		self.confirmButton = QPushButton("Assign Stats")
 		self.confirmButton.clicked.connect(self.assign_stats)
-		self.total1Label.setText(str(self.totals[0]))
-		self.total2Label.setText(str(self.totals[1]))
-		self.total3Label.setText(str(self.totals[2]))
-		self.total4Label.setText(str(self.totals[3]))
-		self.total5Label.setText(str(self.totals[4]))
-		self.total6Label.setText(str(self.totals[5]))
+		self.total1Label.setText(str(self.totals[0][0]))
+		self.total2Label.setText(str(self.totals[1][0]))
+		self.total3Label.setText(str(self.totals[2][0]))
+		self.total4Label.setText(str(self.totals[3][0]))
+		self.total5Label.setText(str(self.totals[4][0]))
+		self.total6Label.setText(str(self.totals[5][0]))
 		self.rollButton.setText("Re-Roll")
 		self.gbox2.addWidget(self.confirmButton,1,2,1,1)
+
 
 
 	def confirm_stats(self):
@@ -64,9 +65,9 @@ class StatsWindow(QWidget):
 		self.restartButton = QPushButton("Restart")
 		self.restartButton.clicked.connect(self.restart)
 
-		
-		self.buttonbox.addWidget(self.confirmButton)
 		self.buttonbox.addWidget(self.restartButton)
+		self.buttonbox.addWidget(self.confirmButton)
+		
 
 		self.vbox.addLayout(self.buttonbox)
 
@@ -86,54 +87,76 @@ class StatsWindow(QWidget):
 			
 		
 		
+	def check_totals(self, num):
+		for total in self.totals:
+			if num == total[0] and total[1] == False:
+				total[1] = True
+				return True
+			else:
+				print ("num, total[0], total[1]", num, total[0], total[1])
+		else:
+			print("self.totals", self.totals)
+			return False				
 
+	def resetTotals(self):
+		for total in self.totals:
+			total[1] = False
 
 	def check_stats(self):
 		try:
-			if int(self.strengthInput.text()) in self.totals:
+			if self.check_totals(int(self.strengthInput.text())):
 				self.strength = int(self.strengthInput.text())
 				self.statsLabel.setText("Stats")
 			else:
 				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				self.resetTotals()
 				return False
 
-			if int(self.dexterityInput.text()) in self.totals:
+			if self.check_totals(int(self.dexterityInput.text())):
 				self.dexterity = int(self.dexterityInput.text())
 				self.statsLabel.setText("Stats")
 			else:
 				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				self.resetTotals()
 				return False	
 
-			if int(self.constitutionInput.text()) in self.totals:
+			if self.check_totals(int(self.constitutionInput.text())):
 				self.constitution = int(self.constitutionInput.text())
 				self.statsLabel.setText("Stats")
 			else:
 				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				self.resetTotals()
 				return False
 
-			if int(self.intelligenceInput.text()) in self.totals:
+			if self.check_totals(int(self.intelligenceInput.text())):
 				self.intelligence = int(self.intelligenceInput.text())
 				self.statsLabel.setText("Stats")
 			else:
 				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				self.resetTotals()
 				return False
 
-			if int(self.wisdomInput.text()) in self.totals:
+			if self.check_totals(int(self.wisdomInput.text())):
 				self.wisdom = int(self.wisdomInput.text())
 				self.statsLabel.setText("Stats")
 			else:
 				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				self.resetTotals()
 				return False
 
-			if int(self.charismaInput.text()) in self.totals:
+			if self.check_totals(int(self.charismaInput.text())):
 				self.charisma = int(self.charismaInput.text())
 				self.statsLabel.setText("Stats")
 			else:
 				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+				self.resetTotals()
 				return False
+
 			return True
+
 		except ValueError:
 			self.statsLabel.setText("YOU MUST INPUT INTEGER VALUES!")
+			self.resetTotals()
 			return False
 		
 
@@ -168,17 +191,18 @@ class StatsWindow(QWidget):
 		self.l0 = QLabel(self)
 		self.l0.setText("Your Numbers: ")
 		self.l1 = QLabel(self)
-		self.l1.setText(str(self.totals[0]))
+		self.l1.setText(str(self.totals[0][0]))
 		self.l2 = QLabel(self)
-		self.l2.setText(str(self.totals[1]))
+		self.l2.setText(str(self.totals[1][0]))
 		self.l3 = QLabel(self)
-		self.l3.setText(str(self.totals[2]))
+		self.l3.setText(str(self.totals[2][0]))
 		self.l4 = QLabel(self)
-		self.l4.setText(str(self.totals[3]))
+		self.l4.setText(str(self.totals[3][0]))
 		self.l5 = QLabel(self)
-		self.l5.setText(str(self.totals[4]))
+		self.l5.setText(str(self.totals[4][0]))
 		self.l6 = QLabel(self)
-		self.l6.setText(str(self.totals[5]))
+		self.l6.setText(str(self.totals[5][0]))
+
 
 		self.hbox2.addWidget(self.l0)
 		self.hbox2.addWidget(self.l1)

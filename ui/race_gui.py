@@ -36,7 +36,7 @@ class RaceWindow(QWidget):
 		self.label = QLabel()	
 		self.setup()
 		
-	def handler(self,pickedRace,first=None,second=None,third=None):
+	def handler(self,pickedRace):
 		if pickedRace == 'dwarf':
 			self.race = subrace_dwarf_gui.SubraceDwarf(self)
 			self.tab_window.main_window.raceset = True

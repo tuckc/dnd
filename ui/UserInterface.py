@@ -14,6 +14,9 @@ class DND_CC_Window(QMainWindow):
 	def __init__(self):
 		QMainWindow.__init__(self)
 		self.setWindowTitle("Dungeons and Dragons Character Creator")
+		desk = QDesktopWidget()
+		self.setFixedSize(desk.width()-100, desk.height()-100)
+		self.setGeometry(0,0,self.width(), self.height())
 		self.setup()
 
 	def setup(self):
