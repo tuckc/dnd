@@ -94,9 +94,10 @@ class LanguageHuman(QWidget):
 		self.undercommonButton=QRadioButton("Undercommon")
 		self.undercommonButton.setToolTip("Spoken by: Drow, Underdark, traders")
 
+		self.hbox = QHBoxLayout()
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
-		self.buttonbox = QHBoxLayout()
+		self.buttonbox = QVBoxLayout()
 
 
 		self.buttongroup = QButtonGroup()
@@ -175,10 +176,14 @@ class LanguageHuman(QWidget):
 		self.doneButton.clicked.connect(self.close)
 		
 
-		self.vbox.addLayout(self.buttonbox)
+		#self.vbox.addLayout(self.buttonbox)
 		self.vbox.addWidget(self.doneButton)
 				
-		self.setLayout(self.vbox)
+
+		self.hbox.addLayout(self.vbox)
+		self.hbox.addLayout(self.buttonbox)
+		self.setLayout(self.hbox)
+
 
 		self.show()
 
