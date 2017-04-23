@@ -23,6 +23,7 @@ import ancestry_dragonborn_gui
 import subrace_gnome_gui
 import subrace_elf_gui
 import subrace_halfling_gui
+import language_human_gui
 
 class RaceWindow(QWidget):
 	def __init__(self, parent):
@@ -73,7 +74,7 @@ class RaceWindow(QWidget):
 
 
 		elif pickedRace == 'human':
-			self.race=human.Human()
+			self.race=language_human_gui.LanuageHuman(self)
 			self.label.setText("Human")
 			#print "human charisma->",self.tab_window.main_window.race.charisma
 

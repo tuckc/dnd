@@ -1,10 +1,7 @@
 from race import Race
 
 class Halfelf(Race):
-    def __init__(self, abilities, language, proficiencies):
-        #pick language
-        #pick abilities?
-        #pick proficiencies?
+    def __init__(self, abilities, language):    #add proficiencies later
         Race.__init__(self)
         self.charisma = 1
         for ability in abilities:
@@ -20,6 +17,9 @@ class Halfelf(Race):
                 self.wisdom = 1
         self.languages = ['Common', 'Elvish', language]
         self.features = ['Darkvision', 'Fey Ancestry']
-        self.proficiencies = proficiencies
+
+    def setProficiencies(self, p):
+        self.proficiencies = p
+        
     def __str__(self):
         return super(Halfelf, self).__str__()
