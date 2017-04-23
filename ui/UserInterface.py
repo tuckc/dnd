@@ -17,6 +17,7 @@ class DND_CC_Window(QMainWindow):
 		self.setup()
 
 	def setup(self):
+		self.raceset = False
 		self.tab_widget = TabView(self)
 		self.setCentralWidget(self.tab_widget)
 		self.Menu = self.menuBar()
@@ -26,6 +27,7 @@ class DND_CC_Window(QMainWindow):
 		self.exitButton.setStatusTip("Exit Application")
 		self.exitButton.triggered.connect(self.close)
 		self.quitmenu.addAction(self.exitButton)
+		self.racepagecount = 0
 		self.show()
 
 
@@ -37,22 +39,17 @@ class TabView(QTabWidget):
 		self.setup()
 
 	def setup(self):
-		self.addTab(WelcomeWindow(self), 'Welcome!')
-		self.addTab(RaceWindow(self), 'Race')
-		#self.setTabEnabled(2, False)
-		self.addTab(StatsWindow(self), 'Stats')
-		#self.setTabEnabled(3, False)
-		self.addTab(ClassWindow(self), 'Class')
-		#self.setTabEnabled(4, False)
-		self.addTab(BackgroundWindow(self), 'Background')
-		#self.setTabEnabled(5, False)
+		self.addTab(WelcomeWindow(self), '&Welcome!')
+		self.addTab(RaceWindow(self), '&Race')
+		
+
 		
 
 class WelcomeWindow(QWidget):
 	def __init__(self,parent):
 		QTabWidget.__init__(self)	
 		self.tab_window = parent
-		#self.start_button = StartButton(self)
+		self.start_button = QPushButton("Start")
 		self.quit_button = QuitButton(self)
 		self.vbox = QVBoxLayout()
 		self.picbox = QHBoxLayout()
@@ -70,30 +67,22 @@ class WelcomeWindow(QWidget):
 		self.picbox.addWidget(self.label2)
 		self.picbox.setAlignment(self.label2, Qt.AlignCenter)'''
 
+		self.start_button.clicked.connect(self.nextpage)
 
-		#self.buttonbox.addWidget(self.start_button)
+		self.buttonbox.addWidget(self.start_button)
 		self.buttonbox.addWidget(self.quit_button)
 		
 		self.setLayout(self.vbox)
 		self.vbox.addLayout(self.picbox)
 		self.vbox.addLayout(self.buttonbox)
 		self.show()
-	
+
+
+	def nextpage(self):
+		self.tab_window.setCurrentIndex(1)
 
 
 
-
-
-'''class StartButton(QPushButton):
-	def __init__(self, parent):
-		QPushButton.__init__(self, parent)
-		self.setText("Start")
-		self.parent = parent
-		self.clicked.connect(self.handleStart)
-
-	def handleStart(self):
-		self.parent.tab_window.setTabEnabled(1,True)
-'''
 
 class QuitButton(QPushButton):
 	def __init__(self, parent):

@@ -25,11 +25,13 @@ import subrace_elf_gui
 import subrace_halfling_gui
 import language_human_gui
 import subrace_halfelf_gui
+import stats_gui
 
 class RaceWindow(QWidget):
 	def __init__(self, parent):
 		QWidget.__init__(self)
 		self.tab_window = parent
+		self.window_title = QLabel("Choose your race!")
 		self.title = QLabel("Your current race is: ")	
 		self.label = QLabel()	
 		self.setup()
@@ -37,38 +39,45 @@ class RaceWindow(QWidget):
 	def handler(self,pickedRace,first=None,second=None,third=None):
 		if pickedRace == 'dwarf':
 			self.race = subrace_dwarf_gui.SubraceDwarf(self)
+			self.tab_window.main_window.raceset = True
 			#print "dwarf charisma->",self.tab_window.main_window.race.charisma
 			#SUBRACE PAGES FINISHED
 
 		elif pickedRace == 'elf':
 			self.race=subrace_elf_gui.SubraceElf(self)
+			self.tab_window.main_window.raceset = True
 			#print "elf charisma->",self.tab_window.main_window.race.charisma
 			#SUBRACE PAGES FINISHED
 
 
 		elif pickedRace == 'dragonborn':
 			self.race=ancestry_dragonborn_gui.AncestryDragonborn(self)
+			self.tab_window.main_window.raceset = True
 			#print "dragonborn charisma->",self.tab_window.main_window.race.features.charisma
 			#ANCESTRY PAGE FINISHED
 
 		elif pickedRace == 'halfling':
 			self.race=subrace_halfling_gui.SubraceHalfling(self)
+			self.tab_window.main_window.raceset = True
 			#print "halfling charisma->",self.tab_window.main_window.race.charisma
 			#SUBRACE PAGE FINISHED
 
 		elif pickedRace == 'gnome':
 			self.race=subrace_gnome_gui.SubraceGnome(self)
+			self.tab_window.main_window.raceset = True
 			#print "gnome charisma->",self.tab_window.main_window.race.charisma
 			#SUBRACE PAGES FINISHED
 
 		elif pickedRace == 'halforc':
 			self.tab_window.main_window.race=halforc.Halforc()
+			self.tab_window.main_window.raceset = True
 			self.label.setText("Half-Orc")
 			#print "halforc charisma->",self.tab_window.main_window.race.charisma
 			#PAG FINISHED
 		
 		elif pickedRace == 'tiefling':
 			self.tab_window.main_window.race=tiefling.Tiefling()
+			self.tab_window.main_window.raceset = True
 			self.label.setText("Tiefling")
 			#print "tiefling charisma->",self.tab_window.main_window.race.charisma
 			#PAGES FINISHED
@@ -76,6 +85,7 @@ class RaceWindow(QWidget):
 
 		elif pickedRace == 'human':
 			self.race=language_human_gui.LanguageHuman(self)
+			self.tab_window.main_window.raceset = True
 			#self.label.setText("Human")
 			#print "human charisma->",self.tab_window.main_window.race.charisma
 
@@ -83,6 +93,7 @@ class RaceWindow(QWidget):
 
 		elif pickedRace == 'halfelf':
 			self.race=subrace_halfelf_gui.SubraceHalfelf(self)
+			self.tab_window.main_window.raceset = True
 			#self.label.setText("Half-Elf")
 			#print "halfelf charisma->",self.tab_window.main_window.race.charisma
 
@@ -139,6 +150,7 @@ class RaceWindow(QWidget):
 		self.titlebox.addWidget(self.title)
 		self.titlebox.addWidget(self.label)
 
+		self.vbox.addWidget(self.window_title)
 		self.vbox.addLayout(self.titlebox)
 		self.racepic = QLabel(self)
 		self.pixmap = QPixmap('race.jpg')
@@ -157,12 +169,29 @@ class RaceWindow(QWidget):
 		self.buttonbox.addWidget(self.halforcButton)
 
 		
+		self.confirmButton = QPushButton("Confirm")
+		self.confirmButton.clicked.connect(self.confirm)
 
 		self.setLayout(self.vbox)
 		self.vbox.addLayout(self.picbox)
 		self.vbox.addLayout(self.buttonbox)
+		self.vbox.addWidget(self.confirmButton)
 
 		self.show()
+
+
+	def confirm(self):
+		if self.tab_window.main_window.raceset:
+			if self.tab_window.main_window.racepagecount < 1:
+				self.tab_window.RaceWindowObject = stats_gui.StatsWindow(self.tab_window)
+				self.tab_window.insertTab(2, self.tab_window.RaceWindowObject, "&Stats")
+				self.tab_window.setCurrentIndex(2)
+				self.window_title.setText("Race confirmed")
+				self.tab_window.main_window.racepagecount = 1
+			else:
+				self.tab_window.setCurrentIndex(2)
+		else:
+			self.window_title.setText("YOU MUST CHOOSE A RACE TO CONTINUE!")
 
 
 	

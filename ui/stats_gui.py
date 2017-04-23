@@ -6,6 +6,7 @@ sys.path = sys.path[:7]
 sys.path.append(sys.path[0][:-2]+"stats")
 sys.path.append(sys.path[0][:-2])
 import stats
+import class_gui
 from random import *
 
 class StatsWindow(QWidget):
@@ -53,6 +54,19 @@ class StatsWindow(QWidget):
 		self.done_label.setText("Stats Added")
 		self.vbox.addWidget(self.done_label)
 
+		self.confirmButton = QPushButton("Confirm")
+		self.confirmButton.clicked.connect(self.confirm)
+
+		self.vbox.addWidget(self.confirmButton)
+
+		self.show()
+
+
+
+			
+			
+
+
 		self.strength = int(self.strengthInput.text())
 		self.dexterity = int(self.dexterityInput.text())
 		self.constitution = int(self.constitutionInput.text())
@@ -68,7 +82,12 @@ class StatsWindow(QWidget):
 		self.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
 
 		self.stacked_layout.setCurrentIndex(2)
-	
+
+
+	def confirm(self):
+		self.tab_window.ClassWindowObject = class_gui.ClassWindow(self)
+		self.tab_window.insertTab(3, self.tab_window.ClassWindowObject, "&Classes")	
+		self.tab_window.setCurrentIndex(3)
 
 
 	def assign_stats(self):
