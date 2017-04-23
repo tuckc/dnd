@@ -13,6 +13,7 @@ class StatsWindow(QWidget):
 	def __init__(self, parent):	
 		QWidget.__init__(self)
 		self.tab_window = parent
+		self.errnum = 0
 		self.setup()
 
 	def dice_rolled(self):
@@ -63,25 +64,70 @@ class StatsWindow(QWidget):
 
 
 
-			
-			
-
-
-		self.strength = int(self.strengthInput.text())
-		self.dexterity = int(self.dexterityInput.text())
-		self.constitution = int(self.constitutionInput.text())
-		self.intelligence = int(self.intelligenceInput.text())
-		self.wisdom = int(self.wisdomInput.text())
-		self.charisma = int(self.charismaInput.text())
-
-
 		self.layout3 = QWidget()
 		self.layout3.setLayout(self.vbox)
 		self.stacked_layout.addWidget(self.layout3)
-		race = self.tab_window.main_window.race
-		self.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
 
-		self.stacked_layout.setCurrentIndex(2)
+
+		if self.check_stats():
+			race = self.tab_window.main_window.race
+			self.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
+			self.stacked_layout.setCurrentIndex(2)
+			
+		
+		
+
+
+	def check_stats(self):
+		if int(self.strengthInput.text()) in self.totals:
+			self.strength = int(self.strengthInput.text())
+			self.statsLabel.setText("Stats")
+		else:
+			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+			self.errnum += 1
+			return False
+
+		if int(self.dexterityInput.text()) in self.totals:
+			self.dexterity = int(self.dexterityInput.text())
+			self.statsLabel.setText("Stats")
+		else:
+			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+			self.errnum += 1
+			return False
+
+		if int(self.constitutionInput.text()) in self.totals:
+			self.constitution = int(self.constitutionInput.text())
+			self.statsLabel.setText("Stats")
+		else:
+			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+			self.errnum += 1
+			return False
+
+		if int(self.intelligenceInput.text()) in self.totals:
+			self.intelligence = int(self.intelligenceInput.text())
+			self.statsLabel.setText("Stats")
+		else:
+			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+			self.errnum += 1
+			return False
+
+		if int(self.wisdomInput.text()) in self.totals:
+			self.wisdom = int(self.wisdomInput.text())
+			self.statsLabel.setText("Stats")
+		else:
+			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+			self.errnum += 1
+			return False
+
+		if int(self.charismaInput.text()) in self.totals:
+			self.charisma = int(self.charismaInput.text())
+			self.statsLabel.setText("Stats")
+		else:
+			self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
+			self.errnum += 1
+			return False
+
+		return True
 
 
 	def confirm(self):
