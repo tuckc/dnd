@@ -51,11 +51,9 @@ class BackgroundWindow(QWidget):
 		#Run pdftk system command to populate the pdf file. The file "file_fdf.fdf" is pushed in to "input_pdf.pdf" thats generated as a new "output_pdf.pdf" file.
 		pdftk_cmd = "pdftk ../charsheet.pdf fill_form file_fdf.fdf output ../output_pdf.pdf"
 		os.system(pdftk_cmd)
-
-#=======
 		
 		self.tab_window.main_window.character_object = character.Character(name,stats,race,char_class,self.backgrounds_object)
-#>>>>>>> fe578e1809b9c74567c3d5fc60540bd60ba54b58
+
 		self.l4.setText("Character outputted to pdf")
 
 
@@ -126,7 +124,7 @@ class BackgroundWindow(QWidget):
 		i = 0 
 		while i < len(self.features)+1:
 			if self.vbox4.itemAt(i+1).widget().isChecked():
-				self.addedFeatures = self.vbox4.itemAt(i+1).widget().text()
+				self.addedFeatures = [self.vbox4.itemAt(i+1).widget().text()]
 			i = i + 1
 
 		#print(self.addedFeatures)
