@@ -87,10 +87,9 @@ class StatsWindow(QWidget):
 
 		if self.check_stats():
 			race = self.tab_window.main_window.race
-			self.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
+			self.tab_window.main_window.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
 			self.stacked_layout.setCurrentIndex(2)
-			
-			self.stat_info.setText(self.stats_object.__str__())
+			self.stat_info.setText(self.tab_window.main_window.stats_object.__str__())
 
 			
 		

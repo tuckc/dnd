@@ -2,10 +2,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.QtGui import *
 import sys
-sys.path = sys.path[:7]
 sys.path.append(sys.path[0][:-2]+"backgrounds")
 sys.path.append(sys.path[0][:-2])
 import backgrounds
+import character
 
 class BackgroundWindow(QWidget):
 	def __init__(self, parent):	
@@ -23,18 +23,31 @@ class BackgroundWindow(QWidget):
 			self.addedtraits.append(self.fbox.itemAt(i).widget().text())
 			i = i + 2
 		
-		print(self.addedtraits)
+		#print(self.addedtraits)
 
 		self.traits_object = backgrounds.Traits(self.addedtraits[0],self.addedtraits[1],self.addedtraits[2],self.addedtraits[3],self.addedtraits[4],self.addedAlignments)
 		self.backgrounds_object = backgrounds.Background(self.addedSkills,self.other,self.addedLanguages,self.addedFeatures,self.traits_object)
+		name = self.fbox.itemAt(4).widget().text()
+		flaws = self.fbox.itemAt(3).widget().text()
+		bonds = self.fbox.itemAt(2).widget().text()
+		ideals = self.fbox.itemAt(1).widget().text()
+		personality = self.fbox.itemAt(0).widget().text()
+		stats = self.tab_window.main_window.stats_object
+		race = self.tab_window.main_window.race
+		char_class = self.tab_window.main_window.classes
+		
+		self.tab_window.main_window.character_object = character.Character(name,stats,race,char_class,self.backgrounds_object)
+    	
+    	#MAKE CALL TO PDF CREATOR HERE
 
+    	self.l4.setText("Character outputted to pdf")
 
 
 	def add_personality(self):
 		self.layout5 = QWidget()
 		self.fbox = QFormLayout()
 		self.vbox6 = QVBoxLayout()
-		self.personality_attributes = ["Personaity","Ideals","Bonds","Flaws", "Name"]
+		self.personality_attributes = ["Personality","Ideals","Bonds","Flaws", "Name"]
 		self.b4 = QPushButton("Finish")
 		self.b4.clicked.connect(self.complete_background)
 
@@ -63,7 +76,7 @@ class BackgroundWindow(QWidget):
 				self.addedAlignments = self.vbox5.itemAt(i+1).widget().text()
 			i = i + 1
 
-		print(self.addedAlignments)
+		#print(self.addedAlignments)
 
 
 		self.layout5.setLayout(self.vbox6)
@@ -100,7 +113,7 @@ class BackgroundWindow(QWidget):
 				self.addedFeatures = self.vbox4.itemAt(i+1).widget().text()
 			i = i + 1
 
-		print(self.addedFeatures)
+		#print(self.addedFeatures)
 
 		self.layout4.setLayout(self.vbox5)
 		self.stacked_layout.addWidget(self.layout4)
@@ -145,8 +158,8 @@ class BackgroundWindow(QWidget):
 				self.other.append(self.vbox3.itemAt(i+1).widget().text())
 			i = i + 1
 
-		print(self.addedLanguages)
-		print(self.other)
+		#print(self.addedLanguages)
+		#print(self.other)
 
 		self.vbox4.addWidget(self.b2)
 
@@ -209,7 +222,7 @@ class BackgroundWindow(QWidget):
 				self.addedSkills.append(self.vbox.itemAt(i+1).widget().text())
 			i = i + 1
 
-		print(self.addedSkills)
+		#print(self.addedSkills)
 
 		self.hbox.addLayout(self.vbox2)
 		self.hbox.addLayout(self.vbox3)

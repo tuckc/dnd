@@ -3,11 +3,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import sys
-#from ..races import *
-#print sys.path
-#print '---------------------------------------'
+
+#print (sys.path)
 sys.path.append(sys.path[0][:-2]+"classes")
 sys.path.append(sys.path[0][:-2])
+#print(sys.path)
 import background_gui
 import barbarian
 import bard
@@ -23,12 +23,11 @@ import sorcerer
 import warlock
 import wizard
 
-
 class ClassWindow(QWidget):
 	def __init__(self, parent):
 		QWidget.__init__(self)
 		self.tab_window = parent
-		self.window_title = QLabel("Choose your race!")
+		self.window_title = QLabel("Choose your class!")
 		self.window_title.setAlignment(Qt.AlignCenter)
 		self.title = QLabel("Your current Class is: ")	
 		self.label = QLabel()	
