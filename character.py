@@ -311,7 +311,8 @@ class Character(object):
 
 
     def __str__(self):
-        st = "Strength: "+ self.stats.strength.__str__()
+        st = "Race: " + self.race_name
+        st += "\nStrength: "+ self.stats.strength.__str__()
         st += "\nDexterity: "+ self.stats.dexterity.__str__()
         st += "\nConstitution: "+ self.stats.constitution.__str__()
         st += "\nIntelligence: "+ self.stats.intelligence.__str__()

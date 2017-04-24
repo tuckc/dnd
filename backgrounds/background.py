@@ -28,29 +28,17 @@ class Background(object):
                 st += ", "
 
         st += "\nPersonality: "
-        for b in self.personality:
-            st += b
-            if b != self.personality[-1]:
-                st += ", "
+        st += self.personality
 
 
         st += "\nIdeals: "
-        for b in self.ideals:
-            st += b
-            if b != self.ideals[-1]:
-                st += ", "
+        st += self.ideals
 
         st += "\nBonds: "
-        for b in self.bonds:
-            st += b
-            if b != self.bonds[-1]:
-                st += ", "
+        st += self.bonds
 
         st += "\nFlaws: "
-        for b in self.flaws:
-            st += b
-            if b != self.flaws[-1]:
-                st += ", "
+        st += self.flaws
 
         st += "\nName:"
         st += self.name
