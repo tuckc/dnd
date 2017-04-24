@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.QtGui import *
 import sys
-#sys.path = sys.path[:7]
+sys.path = sys.path[:7]
 sys.path.append(sys.path[0][:-2]+"backgrounds")
 sys.path.append(sys.path[0][:-2])
 import backgrounds
@@ -14,17 +14,29 @@ class BackgroundWindow(QWidget):
 		self.setup()	
 
 
-	#def complete_background(self):
+	def complete_background(self):
+
+		self.addedtraits = []
+
+		i = 1
+		while i < self.fbox.count():
+			self.addedtraits.append(self.fbox.itemAt(i).widget().text())
+			i = i + 2
 		
+		print(self.addedtraits)
+
+		self.traits_object = backgrounds.Traits(self.addedtraits[0],self.addedtraits[1],self.addedtraits[2],self.addedtraits[3],self.addedtraits[4],self.addedAlignments)
+		self.backgrounds_object = backgrounds.Background(self.addedSkills,self.other,self.addedLanguages,self.addedFeatures,self.traits_object)
+
 
 
 	def add_personality(self):
 		self.layout5 = QWidget()
 		self.fbox = QFormLayout()
 		self.vbox6 = QVBoxLayout()
-		self.personality_attributes = ["Personality","Ideals","Bonds","Flaws", "Name"]
+		self.personality_attributes = ["Personaity","Ideals","Bonds","Flaws", "Name"]
 		self.b4 = QPushButton("Finish")
-		#self.b4.clicked.connect(self.complete_background)
+		self.b4.clicked.connect(self.complete_background)
 
 		self.l4 = QLabel()
 		self.l4.setText("Fill Out Traits")
@@ -43,6 +55,15 @@ class BackgroundWindow(QWidget):
 
 		self.vbox6.addLayout(self.fbox)
 		self.vbox6.addWidget(self.b4)
+
+
+		i = 0 
+		while i < len(self.alignments)+1:
+			if self.vbox5.itemAt(i+1).widget().isChecked():
+				self.addedAlignments = self.vbox5.itemAt(i+1).widget().text()
+			i = i + 1
+
+		print(self.addedAlignments)
 
 
 		self.layout5.setLayout(self.vbox6)
@@ -71,6 +92,16 @@ class BackgroundWindow(QWidget):
 
 		self.vbox5.addWidget(self.b3)
 
+
+
+		i = 0 
+		while i < len(self.features)+1:
+			if self.vbox4.itemAt(i+1).widget().isChecked():
+				self.addedFeatures = self.vbox4.itemAt(i+1).widget().text()
+			i = i + 1
+
+		print(self.addedFeatures)
+
 		self.layout4.setLayout(self.vbox5)
 		self.stacked_layout.addWidget(self.layout4)
 		self.stacked_layout.setCurrentIndex(3)
@@ -94,6 +125,28 @@ class BackgroundWindow(QWidget):
 			self.vbox4.addWidget(QCheckBox(self.features[i]))
 			self.vbox4.itemAt(i+1).setAlignment(Qt.AlignCenter)
 			i = i + 1
+
+
+		self.addedLanguages = []
+
+
+		i = 0 
+		while i < len(self.languages):
+			if self.vbox2.itemAt(i+1).widget().isChecked():
+				self.addedLanguages.append(self.vbox2.itemAt(i+1).widget().text())
+			i = i + 1
+
+
+		self.other	= []
+
+		i = 0
+		while i < len(self.tools):
+			if self.vbox3.itemAt(i+1).widget().isChecked():
+				self.other.append(self.vbox3.itemAt(i+1).widget().text())
+			i = i + 1
+
+		print(self.addedLanguages)
+		print(self.other)
 
 		self.vbox4.addWidget(self.b2)
 
@@ -146,6 +199,17 @@ class BackgroundWindow(QWidget):
 			self.vbox3.itemAt(i+1).setAlignment(Qt.AlignCenter)
 			i = i + 1
 
+
+
+		self.addedSkills = []
+
+		i = 0 
+		while i < len(self.skills)+1:
+			if self.vbox.itemAt(i+1).widget().isChecked():
+				self.addedSkills.append(self.vbox.itemAt(i+1).widget().text())
+			i = i + 1
+
+		print(self.addedSkills)
 
 		self.hbox.addLayout(self.vbox2)
 		self.hbox.addLayout(self.vbox3)
