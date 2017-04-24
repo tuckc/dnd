@@ -15,3 +15,14 @@ class Stats(object):
         self.int_mod = (self.intelligence - 10) / 2
         self.wis_mod = (self.wisdom - 10) / 2
         self.chr_mod = (self.charisma - 10) / 2
+
+    
+    def __str__(self):
+        st = "Strength: "+ self.strength.__str__()
+        st += "\nDexterity: "+ self.dexterity.__str__()
+        st += "\nConstitution: "+ self.constitution.__str__()
+        st += "\nIntelligence: "+ self.intelligence.__str__()
+        st += "\nWisdom: "+ self.wisdom.__str__()
+        st += "\nCharisma: "+ self.charisma.__str__()
+        return st
+

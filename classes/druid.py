@@ -25,4 +25,6 @@ class Druid(Class):
         self.equipment = equipment
         self.cantrips = cantrips
         self.spells = spells
+    def __str__(self):
+        return super(Druid, self).__str__()
         

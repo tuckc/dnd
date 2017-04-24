@@ -20,3 +20,5 @@ class Rogue(Class):
         self.saving_throws = ['Dexterity', 'Intelligence']
         self.skills = skills
         self.equipment = equipment
+    def __str__(self):
+        return super(Rogue, self).__str__()

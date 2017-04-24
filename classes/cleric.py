@@ -15,3 +15,5 @@ class Cleric(Class):
         self.equipment = equipment
         self.cantrips = cantrips
         self.spells = spells
+    def __str__(self):
+        return super(Cleric, self).__str__()

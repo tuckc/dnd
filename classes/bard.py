@@ -18,3 +18,7 @@ class Bard(Class):
         self.equipment = equipment
         self.cantrips = cantrips
         self.spells = spells
+        
+    def __str__(self):
+        return super(Bard, self).__str__()
+

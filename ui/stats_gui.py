@@ -27,7 +27,7 @@ class StatsWindow(QWidget):
 			while i < 4:
 				self.rolls.append(randint(1,6))
 				i = i +1
-			print(self.rolls)
+			#print(self.rolls)
 			num1 = max(self.rolls)
 			self.rolls.remove(num1)
 			num2 = max(self.rolls)
@@ -55,7 +55,12 @@ class StatsWindow(QWidget):
 		self.vbox = QVBoxLayout()
 		self.done_label = QLabel(self)
 		self.done_label.setText("Stats Added")
-		self.vbox.addWidget(self.done_label)
+		self.stat_info = QLabel()
+		self.labelbox = QHBoxLayout()
+		self.labelbox.addWidget(self.done_label)
+		self.labelbox.addWidget(self.stat_info)
+
+		self.vbox.addLayout(self.labelbox)
 
 		self.buttonbox = QHBoxLayout()
 
@@ -85,6 +90,9 @@ class StatsWindow(QWidget):
 			self.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
 			self.stacked_layout.setCurrentIndex(2)
 			
+			self.stat_info.setText(self.stats_object.__str__())
+
+			
 		
 		
 	def check_totals(self, num):
@@ -93,9 +101,10 @@ class StatsWindow(QWidget):
 				total[1] = True
 				return True
 			else:
-				print ("num, total[0], total[1]", num, total[0], total[1])
+				pass
+				#print ("num, total[0], total[1]", num, total[0], total[1])
 		else:
-			print("self.totals", self.totals)
+			#print("self.totals", self.totals)
 			return False				
 
 	def resetTotals(self):

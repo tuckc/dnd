@@ -12,4 +12,6 @@ class Monk(Class):
         self.saving_throws = ['Strength', 'Dexterity']
         self.skills = skills
         self.equipment = equipment
+    def __str__(self):
+        return super(Monk, self).__str__()
         

@@ -16,4 +16,6 @@ class Ranger(Class):
         self.saving_throws = ['Strength', 'Dexterity']
         self.skills = skills
         self.equipment = equipment
+    def __str__(self):
+        return super(Ranger, self).__str__()
         

@@ -14,4 +14,6 @@ class Fighter(Class):
         self.saving_throws = ['Strength', 'Constitution']
         self.skills = skills
         self.equipment = equipment
+    def __str__(self):
+        return super(Fighter, self).__str__()
         

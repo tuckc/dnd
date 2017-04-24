@@ -33,6 +33,7 @@ class DND_CC_Window(QMainWindow):
 		self.racepagecount = 0
 		self.classpagecount = 0
 		self.statspagecount = 0
+		self.backgroundpagecount = 0
 		self.show()
 
 	def returnStatsWindow(self,tab_window):

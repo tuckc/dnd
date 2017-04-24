@@ -13,4 +13,6 @@ class Warlock(Class):
         self.equipment = equipment
         self.cantrips = cantrips
         self.spells = spells
+    def __str__(self):
+        return super(Warlock, self).__str__()
         

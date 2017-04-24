@@ -13,4 +13,6 @@ class Paladin(Class):
         self.saving_throws = ['Wisdom', 'Charisma']
         self.skills = skills
         self.equipment = equipment
+    def __str__(self):
+        return super(Paladin, self).__str__()
         

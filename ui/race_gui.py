@@ -33,13 +33,14 @@ class RaceWindow(QWidget):
 		self.tab_window = parent
 		self.window_title = QLabel("Choose your race!")
 		self.title = QLabel("Your current race is: ")	
-		self.label = QLabel()	
+		self.label = QLabel()
 		self.setup()
 		
 	def handler(self,pickedRace):
 		if pickedRace == 'dwarf':
 			self.race = subrace_dwarf_gui.SubraceDwarf(self)
 			self.tab_window.main_window.raceset = True
+
 			#print "dwarf charisma->",self.tab_window.main_window.race.charisma
 			#SUBRACE PAGES FINISHED
 

@@ -17,3 +17,5 @@ class Wizard(Class):
         self.equipment = equipment
         self.cantrips = cantrips
         self.spells = spells
+    def __str__(self):
+        return super(Wizard, self).__str__()
