@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.QtGui import *
+import os
 import sys
+import fdfgen
 sys.path.append(sys.path[0][:-2]+"backgrounds")
 sys.path.append(sys.path[0][:-2])
 import backgrounds
@@ -22,7 +24,7 @@ class BackgroundWindow(QWidget):
 		while i < self.fbox.count():
 			self.addedtraits.append(self.fbox.itemAt(i).widget().text())
 			i = i + 2
-		
+
 		#print(self.addedtraits)
 
 		self.traits_object = backgrounds.Traits(self.addedtraits[0],self.addedtraits[1],self.addedtraits[2],self.addedtraits[3],self.addedtraits[4],self.addedAlignments)
@@ -35,27 +37,21 @@ class BackgroundWindow(QWidget):
 		stats = self.tab_window.main_window.stats_object
 		race = self.tab_window.main_window.race
 		char_class = self.tab_window.main_window.classes
-		
+
 		self.tab_window.main_window.character_object = character.Character(name,stats,race,char_class,self.backgrounds_object)
-    	
-    	'''
 
+		all_fields = self.tab_window.main_window.character_object.get_form_fields()
 
+		#Create FDF file with these fields
+		fdf_data = fdfgen.forge_fdf("", all_fields, [], [], [])
+		fdf_file = open("file_fdf.fdf","w") 
+		fdf_file.write(fdf_data) 
+		fdf_file.close()
+		#Run pdftk system command to populate the pdf file. The file "file_fdf.fdf" is pushed in to "input_pdf.pdf" thats generated as a new "output_pdf.pdf" file.
+		pdftk_cmd = "pdftk ../charsheet.pdf fill_form file_fdf.fdf output ../output_pdf.pdf"
+		os.system(pdftk_cmd)
 
-
-
-
-    	MAKE CALL TO PDF CREATOR HERE
-
-
-
-
-
-
-    	
-    	'''
-
-    	self.l4.setText("Character outputted to pdf")
+		self.l4.setText("Character outputted to pdf")
 
 
 	def add_personality(self):
