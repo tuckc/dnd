@@ -56,7 +56,8 @@ class BackgroundWindow(QWidget):
 		
 		self.tab_window.main_window.character_object = character.Character(name,stats,race,char_class,self.backgrounds_object)
 #>>>>>>> fe578e1809b9c74567c3d5fc60540bd60ba54b58
-		self.l4.setText("Character outputted to pdf")
+		self.l4.setText(self.tab_window.main_window.character_object.__str__())
+
 
 
 	def add_personality(self):
@@ -67,9 +68,9 @@ class BackgroundWindow(QWidget):
 		self.b4 = QPushButton("Finish")
 		self.b4.clicked.connect(self.complete_background)
 
-		self.l4 = QLabel()
+		self.l4 = QTextEdit()
 		self.l4.setText("Fill Out Traits")
-		self.l4.setAlignment(Qt.AlignCenter)
+		self.l4.setReadOnly(True)
 		self.vbox6.addWidget(self.l4)
 
 
@@ -122,11 +123,11 @@ class BackgroundWindow(QWidget):
 		self.vbox5.addWidget(self.b3)
 
 
-
+		self.addedFeatures = []
 		i = 0 
 		while i < len(self.features)+1:
 			if self.vbox4.itemAt(i+1).widget().isChecked():
-				self.addedFeatures = self.vbox4.itemAt(i+1).widget().text()
+				self.addedFeatures.append(self.vbox4.itemAt(i+1).widget().text())
 			i = i + 1
 
 		#print(self.addedFeatures)
@@ -142,6 +143,7 @@ class BackgroundWindow(QWidget):
 		self.features = ["Shelter of the Faithful", "False Identity", "Criminal Contact", "By Popular Demand", "Rustic Hospitality", "Guild Membership", "Discovery", "Position of Priviledge", "Wonderer", "Researcher", "Ship's Passage", "Military Rank", "City Secrets"]
 		self.b2 = QPushButton("Go To Alignments")
 		self.b2.clicked.connect(self.add_alignment)
+
 
 		self.l2 = QLabel()
 		self.l2.setText("Choose a Background Feature")

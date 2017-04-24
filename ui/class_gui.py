@@ -31,13 +31,14 @@ class ClassWindow(QWidget):
 		self.window_title.setAlignment(Qt.AlignCenter)
 		self.title = QLabel("Your current Class is: ")	
 		self.label = QLabel()	
+		self.classSelected = False
 		self.setup()
 
 	def handler(self,pickedClass):
 		if pickedClass == 'barbarian':
 			self.tab_window.main_window.classes=barbarian.Barbarian(['Nature','Perception'],['Great-Axe','Two Handaxe','Explorer Pack with 4 Javelins'])	
 			self.label.setText("Barbarian\n{}".format(self.tab_window.main_window.classes.__str__()))
-			
+			self.classSelected = True
 
 		elif pickedClass == 'bard':
 			self.tab_window.main_window.classes=bard.Bard(['Persuasion', 'Stealth','Nature'],['Rapier','Diplomat Pack'],['Flute'],['Dancing Lights','Viscous Mockery'],['Charm Person','Detect Magic','Healing Word','Thunderwave'])			
@@ -76,7 +77,7 @@ class ClassWindow(QWidget):
 			
 
 		elif pickedClass == 'rogue':
-			self.tab_window.main_window.classes=rogue.Rogue(['Stealth','Sleight of Hand','Investigation','Athleticism'],['Rapier','Shortbow with 20 arrows','Burglars pack','Leather armor','Two daggers',"Thieve's tools"],'Thieves tools','Stealth')			
+			self.tab_window.main_window.classes=rogue.Rogue(['Stealth','Sleight of Hand','Investigation','Athletics'],['Rapier','Shortbow with 20 arrows','Burglars pack','Leather armor','Two daggers',"Thieve's tools"],'Thieves tools','Stealth')			
 			self.label.setText("Rogue\n{}".format(self.tab_window.main_window.classes.__str__()))
 			
 		elif pickedClass == 'sorcerer':
@@ -94,15 +95,9 @@ class ClassWindow(QWidget):
 		elif pickedClass == 'wizard':
 			self.tab_window.main_window.classes=wizard.Wizard(['History','Insight'],['Quarterstaff','Component pouch','Scholar pack','Spellbook'],['Mage hand','Light','Ray of Frost'],['Burning hands','Charm person','Feather fall','Mage armor','Missile','Sleep'])			
 			self.label.setText("Wizard\n{}".format(self.tab_window.main_window.classes.__str__()))
-			
-
-
-		'''Order: Acrobatics, Animal Handling, Athletics, Deception,
-        History, Insight, Intimidation, Investigation,
-        Arcana, Perception, Nature, Performance,
-        Medicine, Religion, Stealth, Persuasion,
-        Sleight of Hand, Survival'''
 		
+		self.classSelected = True	
+
 
 	def setup(self):	
 		self.barbarianButton=QPushButton('Barbarian')
@@ -203,11 +198,14 @@ class ClassWindow(QWidget):
 
 	def confirm(self):
 		if self.tab_window.main_window.backgroundpagecount < 1:
-			self.tab_window.BackgroundWindowObject = background_gui.BackgroundWindow(self.tab_window)
-			self.tab_window.addTab(self.tab_window.BackgroundWindowObject, "&Background")
-			self.tab_window.setCurrentIndex(4)
-			self.window_title.setText("Class Confirmed")
-			self.tab_window.main_window.backgroundpagecount = 1
+			if self.classSelected:
+				self.tab_window.BackgroundWindowObject = background_gui.BackgroundWindow(self.tab_window)
+				self.tab_window.addTab(self.tab_window.BackgroundWindowObject, "&Background")
+				self.tab_window.setCurrentIndex(4)
+				self.window_title.setText("Class Confirmed")
+				self.tab_window.main_window.backgroundpagecount = 1
+			else:
+				self.window_title.setText("YOU MUST SELECT A CLASS TO CONTINUE!")
 		else:
 			self.tab_window.setCurrentIndex(4)
 			
