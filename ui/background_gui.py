@@ -37,25 +37,7 @@ class BackgroundWindow(QWidget):
 		char_class = self.tab_window.main_window.classes
 		
 		self.tab_window.main_window.character_object = character.Character(name,stats,race,char_class,self.backgrounds_object)
-    	
-    	'''
-
-
-
-
-
-
-    	MAKE CALL TO PDF CREATOR HERE
-
-
-
-
-
-
-    	
-    	'''
-
-    	self.l4.setText("Character outputted to pdf")
+		self.l4.setText("Character outputted to pdf")
 
 
 	def add_personality(self):

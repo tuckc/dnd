@@ -71,7 +71,7 @@ class ClassWindow(QWidget):
 
 
 		elif pickedClass == 'ranger':
-			self.tab_window.main_window.classes=ranger.Ranger(['Animal Healing','Nature'],['Scale mail','Two shortswords','Dungeoneer pack','Longbow 20 arrows'])			
+			self.tab_window.main_window.classes=ranger.Ranger(['Animal Handling','Nature'],['Scale mail','Two shortswords','Dungeoneer pack','Longbow 20 arrows'])			
 			self.label.setText("Ranger\n{}".format(self.tab_window.main_window.classes.__str__()))
 			
 
