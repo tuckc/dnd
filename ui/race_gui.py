@@ -151,13 +151,14 @@ class RaceWindow(QWidget):
 		self.titlebox.addWidget(self.title)
 		self.titlebox.addWidget(self.label)
 
+
 		self.vbox.addWidget(self.window_title)
 		self.vbox.addLayout(self.titlebox)
 		self.racepic = QLabel(self)
 		self.pixmap = QPixmap('race.jpg')
 		self.racepic.setPixmap(self.pixmap)
 		self.picbox.addWidget(self.racepic)
-		self.pixmap.scaled(self.width()-100,self.height())
+		self.racepic.resize(self.width()-50,self.height()-400)
 		
 		self.buttonbox.addWidget(self.gnomeButton)		
 		self.buttonbox.addWidget(self.halflingButton)		

@@ -330,9 +330,9 @@ class PickLanguage(QWidget):
 				self.parent.parent_window.tab_window.main_window.race = halfelf.Halfelf("Intelligence",self.getLanguage())
 			elif self.ability == "Wisdom":
 				self.parent.parent_window.tab_window.main_window.race = halfelf.Halfelf("Wisdom",self.getLanguage())
-			self.parent.parent_window.label.setText("Halfelf with {} Language".format(self.getLanguage()))
-			print("Character set to")
-			print(self.parent.parent_window.tab_window.main_window.race)
+			self.parent.parent_window.label.setText("Halfelf with {} Ability and {} Language".format(self.ability, self.getLanguage()))
+			#print("Character set to")
+			#print(self.parent.parent_window.tab_window.main_window.race)
 			event.accept()
 		else:
 			self.label.setText("YOU MUST SELECT A LANGUAGE TO MOVE ON!")

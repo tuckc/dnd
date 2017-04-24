@@ -36,12 +36,12 @@ class ClassWindow(QWidget):
 
 	def handler(self,pickedClass):
 		if pickedClass == 'barbarian':
-			self.tab_window.main_window.classes=barbarian.Barbarian(['Nature','Perception'],['Great-Axe','Two handaxe','Explorer pack with 4 javelins'])	
+			self.tab_window.main_window.classes=barbarian.Barbarian(['Nature','Perception'],['Great-Axe','Two Handaxe','Explorer Pack with 4 Javelins'])	
 			self.label.setText("Barbarian\n{}".format(self.tab_window.main_window.classes.__str__()))
 			
 
 		elif pickedClass == 'bard':
-			self.tab_window.main_window.classes=bard.Bard(['Persuasion', 'Stealth','Nature'],['Rapier','diplomat pack'],'flute',['Dancing Lights','Viscous Mockery'],['Charm Person','Detect Magic','Healing Word','Thunderwave'])			
+			self.tab_window.main_window.classes=bard.Bard(['Persuasion', 'Stealth','Nature'],['Rapier','Diplomat Pack'],['Flute'],['Dancing Lights','Viscous Mockery'],['Charm Person','Detect Magic','Healing Word','Thunderwave'])			
 			self.label.setText("Bard\n{}".format(self.tab_window.main_window.classes.__str__()))
 
 
@@ -51,7 +51,7 @@ class ClassWindow(QWidget):
 
 
 		elif pickedClass == 'druid':
-			self.tab_window.main_window.classes=druid.Druid(["Animal Handling","Survival"],['Wooden Shield','Scimitar','Leather armor','Explorers pack','Druidic focus'],['Posion Spray','Frostbite'],["Calm Animal","Charm Animal"])			
+			self.tab_window.main_window.classes=druid.Druid(["Animal Handling","Survival"],['Wooden Shield','Scimitar','Leather armor','Explorers Pack','Druidic Focus'],['Posion Spray','Frostbite'],["Calm Animal","Charm Animal"])			
 			self.label.setText("Druid\n{}".format(self.tab_window.main_window.classes.__str__()))
 
 
@@ -172,7 +172,7 @@ class ClassWindow(QWidget):
 		self.pixmap = QPixmap('classes.jpg')
 		self.classpic.setPixmap(self.pixmap)
 		self.picbox.addWidget(self.classpic)
-		self.pixmap.scaled(self.width()-50,self.height()-400)
+		self.classpic.resize(self.width()-50,self.height()-400)
 		
 		self.buttonbox.addWidget(self.barbarianButton)		
 		self.buttonbox.addWidget(self.bardButton)		

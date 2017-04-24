@@ -116,14 +116,14 @@ class SubraceElf(QWidget):
 			if self.woodButton.isChecked():
 				self.parent_window.tab_window.main_window.race = elf.Elf("Wood Elf")
 				self.parent_window.label.setText("Wood Elf")
-				print("Subrace chosen, character now ")
-				print(self.parent_window.tab_window.main_window.race)
+				#print("Subrace chosen, character now ")
+				#print(self.parent_window.tab_window.main_window.race)
 				event.accept()
 			elif self.darkButton.isChecked():
 				self.parent_window.tab_window.main_window.race = elf.Elf("Dark Elf (Drow)")
 				self.parent_window.label.setText("Dark Elf (Drow)")
-				print("Subrace chosen, character now ")
-				print(self.parent_window.tab_window.main_window.race)
+				#print("Subrace chosen, character now ")
+				#print(self.parent_window.tab_window.main_window.race)
 				event.accept()
 			else:
 				self.label.setText("YOU MUST SELECT A SUBRACE TO CONTINUE!")
@@ -165,7 +165,7 @@ class PickCantrip(QWidget):
 			if each['level'] == level and each['class'].find(jsclass) > -1:
 				newbutton = QRadioButton(each['name'])
 				newbutton.setToolTip(each['desc'])
-				#print(each['name'],"button's id is", self.ids)
+				##print(each['name'],"button's id is", self.ids)
 				self.spellButtons.setId(newbutton,self.ids)
 				self.buttonidmapping[each['name']] = self.ids
 				self.spellButtons.addButton(newbutton)
@@ -390,9 +390,9 @@ class PickLanguage(QWidget):
 	def closeEvent(self,event):
 		if self.languageButtonGroup.checkedId() != -1:
 			self.parent.parent.parent_window.tab_window.main_window.race = elf.Elf("High Elf",self.cantrip, self.getLanguage())
-			self.parent.parent.parent_window.label.setText("High Elf with {} cantrip and {} language".format(self.cantrip, self.getLanguage()))
-			print("Character set to")
-			print(self.parent.parent.parent_window.tab_window.main_window.race)
+			self.parent.parent.parent_window.label.setText("High Elf with {} Cantrip and {} Language".format(self.cantrip, self.getLanguage()))
+			#print("Character set to")
+			#print(self.parent.parent.parent_window.tab_window.main_window.race)
 			event.accept()
 		else:
 			self.label.setText("YOU MUST SELECT A LANGUAGE TO MOVE ON!")
