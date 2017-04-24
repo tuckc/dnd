@@ -92,14 +92,14 @@ class SubraceHalfling(QWidget):
 		if self.lightfootButton.isChecked():
 			self.parent_window.tab_window.main_window.race = halfling.Halfling("Lightfoot Halfling")
 			self.parent_window.label.setText("Lightfoot Halfling")
-			print("Character now ")
-			print(self.parent_window.tab_window.main_window.race)
+			#print("Character now ")
+			#print(self.parent_window.tab_window.main_window.race)
 			event.accept()
 		elif self.stoutButton.isChecked():
 			self.parent_window.tab_window.main_window.race = halfling.Halfling("Stout Halfling")
 			self.parent_window.label.setText("Stout Halfling")
-			print("Character now ")
-			print(self.parent_window.tab_window.main_window.race)
+			#print("Character now ")
+			#print(self.parent_window.tab_window.main_window.race)
 			event.accept()
 		
 		else:

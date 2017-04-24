@@ -90,14 +90,14 @@ class SubraceGnome(QWidget):
 		if self.forestButton.isChecked():
 			self.parent_window.tab_window.main_window.race = gnome.Gnome("Forest Gnome")
 			self.parent_window.label.setText("Forest Gnome")
-			print("Character is now")
-			print(self.parent_window.tab_window.main_window.race)
+			#print("Character is now")
+			#print(self.parent_window.tab_window.main_window.race)
 			event.accept()
 		elif self.rockButton.isChecked():
 			self.parent_window.tab_window.main_window.race = gnome.Gnome("Rock Gnome")
 			self.parent_window.label.setText("Rock Gnome")
-			print("Character is now")
-			print(self.parent_window.tab_window.main_window.race)
+			#print("Character is now")
+			#print(self.parent_window.tab_window.main_window.race)
 			event.accept()
 		else:
 			self.label.setText("YOU MUST SELECT A SUBRACE TO CONTINUE!")

@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import sys
 sys.path.append(sys.path[0][:-2]+"races")
-#print 'NEW path --------------->', sys.path
+##print 'NEW path --------------->', sys.path
 import dwarf
 
 class SubraceDwarf(QWidget):
@@ -173,28 +173,28 @@ class PickTool(QWidget):
 			if self.race == "Mountain Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Mason's Tools")
 				self.parent.parent_window.label.setText("Mountain Dwarf with Mason's Tools")
-				print("Character set to")
-				print(self.parent.parent_window.tab_window.main_window.race)
+				#print("Character set to")
+				#print(self.parent.parent_window.tab_window.main_window.race)
 				event.accept()
 			elif self.race == "Hill Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Mason's Tools")
 				self.parent.parent_window.label.setText("Hill Dwarf with Mason's Tools")
-				print("Character set to")
-				print(self.parent.parent_window.tab_window.main_window.race)
+				#print("Character set to")
+				#print(self.parent.parent_window.tab_window.main_window.race)
 				event.accept()
 
 		elif self.smith.isChecked():
 			if self.race == "Mountain Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Smith's Tools")
 				self.parent.parent_window.label.setText("Mountain Dwarf with Smith's Tools")
-				print("Character set to")
-				print(self.parent.parent_window.tab_window.main_window.race)
+				#print("Character set to")
+				#print(self.parent.parent_window.tab_window.main_window.race)
 				event.accept()
 			elif self.race == "Hill Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Smith's Tools")
 				self.parent.parent_window.label.setText("Hill Dwarf with Smith's Tools")
-				print("Character set to")
-				print(self.parent.parent_window.tab_window.main_window.race)
+				#print("Character set to")
+				#print(self.parent.parent_window.tab_window.main_window.race)
 				event.accept()
 
 
@@ -202,14 +202,14 @@ class PickTool(QWidget):
 			if self.race == "Mountain Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Mountain Dwarf","Brewer's Supplies")
 				self.parent.parent_window.label.setText("Mountain Dwarf with Brewer's Supplies")
-				print("Character set to")
-				print(self.parent.parent_window.tab_window.main_window.race)
+				#print("Character set to")
+				#print(self.parent.parent_window.tab_window.main_window.race)
 				event.accept()
 			elif self.race == "Hill Dwarf":
 				self.parent.parent_window.tab_window.main_window.race = dwarf.Dwarf("Hill Dwarf","Brewer's Supplies")
 				self.parent.parent_window.label.setText("Hill Dwarf with Brewer's Supplies")
-				print("Character set to")
-				print(self.parent.parent_window.tab_window.main_window.race)
+				#print("Character set to")
+				#print(self.parent.parent_window.tab_window.main_window.race)
 				event.accept()
 		else:
 			self.label.setText("YOU MUST SELECT A TOOL SET TO CONTINUE!")

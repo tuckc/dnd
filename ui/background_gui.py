@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.QtGui import *
 import sys
-sys.path = sys.path[:7]
+#sys.path = sys.path[:7]
 sys.path.append(sys.path[0][:-2]+"backgrounds")
 sys.path.append(sys.path[0][:-2])
 import backgrounds
@@ -22,7 +22,7 @@ class BackgroundWindow(QWidget):
 		self.layout5 = QWidget()
 		self.fbox = QFormLayout()
 		self.vbox6 = QVBoxLayout()
-		self.personality_attributes = ["Personaity","Ideals","Bonds","Flaws", "Name"]
+		self.personality_attributes = ["Personality","Ideals","Bonds","Flaws", "Name"]
 		self.b4 = QPushButton("Finish")
 		#self.b4.clicked.connect(self.complete_background)
 
