@@ -18,9 +18,10 @@ class Halfelf(Race):
                     self.wisdom = 1
         self.languages = ['Common', 'Elvish', language]
         self.features = ['Darkvision', 'Fey Ancestry']
+        self.proficiencies = []
 
     def setProficiencies(self, p):
-        self.proficiencies = p
+        self.proficiencies.extend(p)
         
     def __str__(self):
         return super(Halfelf, self).__str__()

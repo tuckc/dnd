@@ -37,6 +37,7 @@ class BackgroundWindow(QWidget):
 		stats = self.tab_window.main_window.stats_object
 		race = self.tab_window.main_window.race
 		char_class = self.tab_window.main_window.classes
+<<<<<<< HEAD
 
 		self.tab_window.main_window.character_object = character.Character(name,stats,race,char_class,self.backgrounds_object)
 
@@ -51,6 +52,10 @@ class BackgroundWindow(QWidget):
 		pdftk_cmd = "pdftk ../charsheet.pdf fill_form file_fdf.fdf output ../output_pdf.pdf"
 		os.system(pdftk_cmd)
 
+=======
+		
+		self.tab_window.main_window.character_object = character.Character(name,stats,race,char_class,self.backgrounds_object)
+>>>>>>> fe578e1809b9c74567c3d5fc60540bd60ba54b58
 		self.l4.setText("Character outputted to pdf")
 
 
