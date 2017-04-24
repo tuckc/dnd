@@ -7,7 +7,7 @@ setup(
 	keywords = "dungeons dragons character creator dnd nerd"
 	url = "https://github.com/tuckc/dnd-character-creator"
 	author = "Sergio Colton Nick Jorge"
-	install_requires=["PyQt 5.8.2", "SIP 4.19.2"]
+	install_requires=["PyQt 5.8.2", "SIP 4.19.2", "pdftk"]
 
 
 	)"""

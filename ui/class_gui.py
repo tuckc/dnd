@@ -76,7 +76,7 @@ class ClassWindow(QWidget):
 			
 
 		elif pickedClass == 'rogue':
-			self.tab_window.main_window.classes=rogue.Rogue(['Stealth','Sleight of hand','Investigation','Athleticism'],['Rapier','Shortbow with 20 arrows','Burglars pack','Leather armor','Two daggers',"Thieve's tools"],'Thieves tools','Stealth')			
+			self.tab_window.main_window.classes=rogue.Rogue(['Stealth','Sleight of Hand','Investigation','Athleticism'],['Rapier','Shortbow with 20 arrows','Burglars pack','Leather armor','Two daggers',"Thieve's tools"],'Thieves tools','Stealth')			
 			self.label.setText("Rogue\n{}".format(self.tab_window.main_window.classes.__str__()))
 			
 		elif pickedClass == 'sorcerer':
@@ -97,7 +97,11 @@ class ClassWindow(QWidget):
 			
 
 
-		
+		'''Order: Acrobatics, Animal Handling, Athletics, Deception,
+        History, Insight, Intimidation, Investigation,
+        Arcana, Perception, Nature, Performance,
+        Medicine, Religion, Stealth, Persuasion,
+        Sleight of Hand, Survival'''
 		
 
 	def setup(self):	
