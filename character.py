@@ -73,6 +73,13 @@ class Character(object):
         for save_throw in self.character_class.saving_throws:
             self.save_mods[save_throw] += 2
         self._set_passive_perception()
+        if self.character_class.expertise:
+            for expertise in self.character_class.expertise:
+                try:
+                    print 'Adding 2 to ' + expertise
+                    self.mods[expertise] += 2
+                except KeyError:
+                    pass
         self._convert_mods_to_str()
 
     def _set_passive_perception(self):
@@ -292,13 +299,13 @@ class Character(object):
         all_fields.append(('Check Box 39', True if 'Stealth' in self.proficiencies else False))
         all_fields.append(('Check Box 40', True if 'Survival' in self.proficiencies else False))
         all_fields.append(('Persuasion', self.mods['Persuasion']))
-        all_fields.append(('SleightofHand', self.mods['Stealth']))
+        all_fields.append(('SleightofHand', self.mods['Sleight of Hand']))
         all_fields.append(('CHamod', '+' + str(self.stats.chr_mod) if self.stats.chr_mod > 0 else self.stats.chr_mod))
         all_fields.append(('Survival', self.mods['Survival']))
         all_fields.append(('AttacksSpellcasting', '\n'.join(self.spells)))
         all_fields.append(('Passive', self.passive_perception))
         languages = ', '.join(self.languages)
-        other = ', '.join(self.other)
+        other = ', '.join(set(self.other))
         both = languages + '\n\n' + other
         all_fields.append(('ProficienciesLang', languages + '\n\n' + other))
         all_fields.append(('Equipment', '\n'.join(self.character_class.equipment)))

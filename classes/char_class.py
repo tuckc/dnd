@@ -8,6 +8,7 @@ class Class(object):
         self.equipment = []
         self.cantrips = []
         self.spells = []
+        self.expertise = []
 
     def __str__(self):
         st = "Hit Die: "+ self.hit_die.__str__()

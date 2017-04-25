@@ -15,10 +15,12 @@ class Rogue(Class):
         self.features = [
             'Expertise: '+ expert1 + ', ' + expert2,
             'Sneak Attack',
-            'Theives\' Cant'
+            'Thieves\' Cant'
         ]
         self.saving_throws = ['Dexterity', 'Intelligence']
         self.skills = skills
         self.equipment = equipment
+        self.expertise = [expert1, expert2]
+
     def __str__(self):
         return super(Rogue, self).__str__()
