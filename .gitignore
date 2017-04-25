@@ -89,6 +89,7 @@ ENV/
 .ropeproject
 
 # Custom
-.fdf
+*.fdf
 parse.py
 tests/
+output_pdf.pdf
