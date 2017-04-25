@@ -76,7 +76,6 @@ class Character(object):
         if self.character_class.expertise:
             for expertise in self.character_class.expertise:
                 try:
-                    print 'Adding 2 to ' + expertise
                     self.mods[expertise] += 2
                 except KeyError:
                     pass

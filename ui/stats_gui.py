@@ -2,10 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.QtGui import *
 import sys
-#<<<<<<< HEAD
 #sys.path = sys.path[:7]
-#=======
-#>>>>>>> fe578e1809b9c74567c3d5fc60540bd60ba54b58
 sys.path.append(sys.path[0][:-2]+"stats")
 sys.path.append(sys.path[0][:-2])
 import stats
