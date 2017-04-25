@@ -34,7 +34,9 @@ class StatsWindow(QWidget):
 			num1 = max(self.rolls)
 			self.rolls.remove(num1)
 			num2 = max(self.rolls)
-			self.totals.append([(num1+num2), False])
+			self.rolls.remove(num2)
+			num3 = max(self.rolls)
+			self.totals.append([(num1+num2+num3), False])
 			i = 0
 			self.rolls = []
 			j = j+1
