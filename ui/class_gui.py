@@ -46,17 +46,17 @@ class ClassWindow(QWidget):
 
 
 		elif pickedClass == 'cleric':
-			self.tab_window.main_window.classes=cleric.Cleric(['Persuasion','Religion'],['Mace','Scale mail','Light Crossbow','PriestPack','Shield'],['Guidance','Light','Mending'],['Command','Identify'],'Light Domain')			
+			self.tab_window.main_window.classes=cleric.Cleric(['Persuasion','Religion'],['Mace','Scale Mail','Light Crossbow','Priest Pack','Shield'],['Guidance','Light','Mending'],['Command','Identify'],'Light Domain')			
 			self.label.setText("Cleric\n{}".format(self.tab_window.main_window.classes.__str__()))
 
 
 		elif pickedClass == 'druid':
-			self.tab_window.main_window.classes=druid.Druid(["Animal Handling","Survival"],['Wooden Shield','Scimitar','Leather armor','Explorers Pack','Druidic Focus'],['Posion Spray','Frostbite'],["Calm Animal","Charm Animal"])			
+			self.tab_window.main_window.classes=druid.Druid(["Animal Handling","Survival"],['Wooden Shield','Scimitar','Leather Armor','Explorers Pack','Druidic Focus'],['Posion Spray','Frostbite'],["Calm Animal","Charm Animal"])			
 			self.label.setText("Druid\n{}".format(self.tab_window.main_window.classes.__str__()))
 
 
 		elif pickedClass == 'fighter':
-			self.tab_window.main_window.classes=fighter.Fighter(['Intimidation','Athletics'],['Chain mail','Martial Weapon and Shield','Light Crossbow and 20 bolts','Dungeoneers pack'],'Dueling')			
+			self.tab_window.main_window.classes=fighter.Fighter(['Intimidation','Athletics'],['Chain Mail','Martial Weapon and Shield','Light Crossbow and 20 bolts','Dungeoneers pack'],'Dueling')			
 			self.label.setText("Fighter\n{}".format(self.tab_window.main_window.classes.__str__()))
 
 
@@ -72,12 +72,12 @@ class ClassWindow(QWidget):
 
 
 		elif pickedClass == 'ranger':
-			self.tab_window.main_window.classes=ranger.Ranger(['Animal Handling','Nature'],['Scale mail','Two shortswords','Dungeoneer pack','Longbow 20 arrows'])			
+			self.tab_window.main_window.classes=ranger.Ranger(['Animal Handling','Nature'],['Scale Mail','Two shortswords','Dungeoneer pack','Longbow 20 arrows'])			
 			self.label.setText("Ranger\n{}".format(self.tab_window.main_window.classes.__str__()))
 			
 
 		elif pickedClass == 'rogue':
-			self.tab_window.main_window.classes=rogue.Rogue(['Stealth','Sleight of Hand','Investigation','Athletics'],['Rapier','Shortbow with 20 arrows','Burglars pack','Leather armor','Two daggers',"Thieve's tools"],'Thieves tools','Stealth')			
+			self.tab_window.main_window.classes=rogue.Rogue(['Stealth','Sleight of Hand','Investigation','Athletics'],['Rapier','Shortbow with 20 arrows','Burglars pack','Leather Armor','Two daggers',"Thieve's tools"],'Thieves tools','Stealth')			
 			self.label.setText("Rogue\n{}".format(self.tab_window.main_window.classes.__str__()))
 			
 		elif pickedClass == 'sorcerer':
@@ -87,7 +87,7 @@ class ClassWindow(QWidget):
 
 
 		elif pickedClass == 'warlock':
-			self.tab_window.main_window.classes=warlock.Warlock(["Arcana","Religion"],['Light crossbow 20 bolts','Component pouch','Scholars pack','Leather armor','Shortsword','Two daggers'],['Eldrich blast','Chill touch'],['Ray of sickness','Witch bolt'],'The Fiend')	
+			self.tab_window.main_window.classes=warlock.Warlock(["Arcana","Religion"],['Light crossbow 20 bolts','Component pouch','Scholars pack','Leather Armor','Shortsword','Two daggers'],['Eldrich blast','Chill touch'],['Ray of sickness','Witch bolt'],'The Fiend')	
 			self.label.setText("Warlock\n{}".format(self.tab_window.main_window.classes.__str__()))
 			
 

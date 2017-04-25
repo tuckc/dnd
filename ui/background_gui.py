@@ -128,10 +128,7 @@ class BackgroundWindow(QWidget):
 		i = 0 
 		while i < len(self.features)+1:
 			if self.vbox4.itemAt(i+1).widget().isChecked():
-
 				self.addedFeatures = [self.vbox4.itemAt(i+1).widget().text()]
-
-				self.addedFeatures.append(self.vbox4.itemAt(i+1).widget().text())
 
 			i = i + 1
 

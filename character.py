@@ -205,9 +205,6 @@ class Character(object):
         self.spells.extend(self.character_class.cantrips)
         self.spells.extend(self.character_class.spells)
 
-    def _set_lang_and_other(self):
-        self.other
-
     def get_form_fields(self):
         all_fields = []
         all_fields.append(('ClassLevel', self.class_name))

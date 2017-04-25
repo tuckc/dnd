@@ -6,7 +6,7 @@ class Cleric(Class):
         self.other = [
             'Light Armor',
             'Medium Armor',
-            'Shields'
+            'Shields',
             'Simple Weapons'
         ]
         self.saving_throws = ['Wisdom', 'Charisma']
