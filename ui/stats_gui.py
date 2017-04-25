@@ -60,7 +60,7 @@ class StatsWindow(QWidget):
 		self.vbox = QVBoxLayout()
 		self.done_label = QLabel(self)
 		self.done_label.setText("Stats Added")
-		self.stat_info = QLabel()
+		
 		self.labelbox = QHBoxLayout()
 		self.labelbox.addWidget(self.done_label)
 		self.labelbox.addWidget(self.stat_info)
@@ -89,12 +89,11 @@ class StatsWindow(QWidget):
 		self.layout3.setLayout(self.vbox)
 		self.stacked_layout.addWidget(self.layout3)
 
+		self.stacked_layout.setCurrentIndex(2)
 
-		if self.check_stats():
-			race = self.tab_window.main_window.race
-			self.tab_window.main_window.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
-			self.stacked_layout.setCurrentIndex(2)
-			self.stat_info.setText(self.tab_window.main_window.stats_object.__str__())
+
+		
+
 
 			
 		
@@ -164,8 +163,13 @@ class StatsWindow(QWidget):
 				self.statsLabel.setText("YOU MUST INPUT VALUES BASED ON YOUR ROLLED STATS!")
 				self.resetTotals()
 				return False
+			
 
-			return True
+			self.stat_info = QLabel()
+			race = self.tab_window.main_window.race
+			self.tab_window.main_window.stats_object = stats.Stats(race,self.strength,self.dexterity,self.constitution,self.intelligence,self.wisdom,self.charisma)
+			self.stat_info.setText(self.tab_window.main_window.stats_object.__str__())
+			self.confirm_stats()
 
 		except ValueError:
 			self.statsLabel.setText("YOU MUST INPUT INTEGER VALUES!")
@@ -185,6 +189,7 @@ class StatsWindow(QWidget):
 		else:
 			self.tab_window.setCurrentIndex(3)
 
+
 	def restart(self):
 		self.tab_window.removeTab(2)
 		self.tab_window.StatsWindowObject = self.tab_window.main_window.returnStatsWindow(self.tab_window)
@@ -198,7 +203,7 @@ class StatsWindow(QWidget):
 		self.fbox = QFormLayout()
 		self.gbox3 = QGridLayout()
 		self.assignButton = QPushButton("Confirm")
-		self.assignButton.clicked.connect(self.confirm_stats)
+		self.assignButton.clicked.connect(self.check_stats)
 		self.hbox2 = QHBoxLayout()
 
 		self.l0 = QLabel(self)

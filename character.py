@@ -308,3 +308,92 @@ class Character(object):
         all_fields.append(('Features and Traits', '\n'.join(self.features)))
 
         return all_fields
+
+
+    def __str__(self):
+        st = "Race: " + self.race_name
+        st += "\nStrength: "+ self.stats.strength.__str__()
+        st += "\nDexterity: "+ self.stats.dexterity.__str__()
+        st += "\nConstitution: "+ self.stats.constitution.__str__()
+        st += "\nIntelligence: "+ self.stats.intelligence.__str__()
+        st += "\nWisdom: "+ self.stats.wisdom.__str__()
+        st += "\nCharisma: "+ self.stats.charisma.__str__()
+        st += "\nSpeed: "+ self.speed.__str__()
+
+        st += "\nLanguages: "
+        for a in self.languages:
+            st += a
+            if a != self.languages[-1]:
+                st += ", "
+
+        st += "\nFeatures: "
+        for b in self.features:
+            st += b
+            if b != self.features[-1]:
+                st += ", "
+
+        st += "\nOther: "
+        for b in self.other:
+            st += b
+            if b != self.other[-1]:
+                st += ", "
+
+        st += "\nSubrace: "
+        st += self.race.subrace
+
+        st += "\nProficiencies: "
+        for b in self.proficiencies:
+            st += b
+            if b != self.proficiencies[-1]:
+                st += ", "
+
+        st += "\nAttacks: "
+        for b in self.attacks:
+            for a in b.keys():
+                st += b[a]
+                st += "  "
+            
+
+        st += "\nBackground:"
+        st += self.background.__str__()
+
+        st += "\nHit Die: "+ self.character_class.hit_die.__str__()
+        
+
+        st += "\nHit Points:"
+        st += self.hit_points
+
+        st += "\nArmor Class:"
+        st += self.armor_class.__str__()
+
+        st += "\nInitiative:"
+        st += str(self.initiative)
+
+        st += "\nOther: "
+        for a in self.other:
+            st += a
+            if a != self.other[-1]:
+                st += ", "
+
+
+
+        st += "\nSaving Throws: "
+        for b in self.saving_throws:
+            st += b
+            if b != self.saving_throws[-1]:
+                st += ", "
+
+        st += "\nEquipment: "
+        for b in self.character_class.equipment:
+            st += b
+            if b != self.character_class.equipment[-1]:
+                st += ", "
+
+        st += "\nSpells: "
+        for b in self.spells:
+            st += b
+            if b != self.spells[-1]:
+                st += ", "
+        return st
+        
+        
